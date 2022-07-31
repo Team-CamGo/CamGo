@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #logo {
+        margin: 100px 0 70px 0;
+        text-align: center;
+      }
+
+      #explain {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      td {
+        height: 200px;
+      }
+
+      #must {
+        color: #cc0000;
+      }
+
+      #option {
+        color: #08a600;
+      }
+
+      #button_area {
+        text-align: center;
+        margin-bottom: 100px;
+      }
+
+      .btn {
+        width: 200px;
+        height: 50px;
+        margin-right: 30px;
+      }
+      
+      #cancle:hover  {
+        cursor: pointer;
+      }
+
+      #confirm:hover {
+        cursor: pointer;
+        background-color: darkseagreen;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      textarea {
+        resize: none;
+        width: 800px;
+        height: 100px;
+        overflow-x: auto;
+      }
+
+      /* 프로모션 약관  */
+      #no-border{
+        border: 0;
+      }
+
+      /* 약관 클릭 시 포커싱 빼기 */
+      textarea:focus {
+        outline: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <div id="logo">로고</div>
+
+    <form id="join_form">
+
+      <table id="explain">
+        <tr>
+          <td>
+                □ 캠고 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 정보 수신(선택) 에 모두 동의합니다.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            □ 개인정보 이용약관 동의 <span id="must">(필수)</span>
+            <br><br>
+
+            <div>
+              <textarea readonly>약관 어쩌구저쩌구</textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            □ 위치정보 이용약관 동의 <span id="must">(필수)</span>
+            <br><br>
+
+            <div>
+              <textarea readonly>약관 어쩌구저쩌구</textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            □ 프로모션 정보 수신 동의 <span id="option">(선택)</span>
+            <br><br>
+
+            <div>
+              <textarea id="no-border" readonly>캠고에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(알림 또는 문자), 이메일로 받아보실 수 있습니다.일부 서비스(별도 회원 체계로 운영하거나 캠고 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우,개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
+              </textarea>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    <div id="button_area">
+      <input type="button" id="cancle" class="btn" value="취소">
+      <input type="button" id="confirm" class="btn" value="확인">
+    </div>
+
+  </form>
+
+  </body>
+</html>
