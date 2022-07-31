@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #logo {
+        margin: 100px 0 70px 0;
+        text-align: center;
+      }
+
+      #guide {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #info_explain {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #info_explain td {
+        height:100px;
+        padding-bottom: 30px;
+      }
+
+      #email_first {
+        width: 190px;
+        height: 30px;
+      }
+
+      .input_box {
+        width: 400px;
+        height: 30px;
+      }
+
+      #email_last {
+        width: 185px;
+        height: 40px;
+      }
+
+      .birth {
+        width: 132px;
+        height: 40px;
+      }
+
+      #sex {
+        width: 400px;
+        height: 40px;
+      }
+
+      #phone {
+        width: 300px;
+        height: 30px;
+        margin-right: 5px;
+        margin-bottom: 10px;
+      }
+
+      #phone_confirm {
+        width: 90px;
+        height: 35px;
+      }
+
+      #phone_confirm:hover {
+        cursor: pointer;
+      }
+
+      #button_area {
+        text-align: center;
+      }
+
+      #confirm {
+        width: 400px;
+        height: 50px;
+        margin-bottom:50px;
+      }
+
+      #chk_area {
+        margin-left: auto;
+        margin-right: auto;
+        width: 410px;
+        height: 180px;
+      }
+
+      </style>
+</head>
+<body>
+
+  <div id="logo">
+    <img id="logo_img" src="./img/logo.png" alt="로고">
+  </div>
+
+  <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
+
+  <form id="join_info_form">
+
+    <table id="info_explain">
+      <tr>
+        <td>
+          아이디 * <br><br>
+
+          <input id="email_first" value=""> @ 
+          <select id="email_last">
+            <option value="">이메일</option>
+            <option value="1">gmail.com</option>
+            <option value="2">naver.com</option>
+            <option value="3">daum.net</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          비밀번호 * <br><br>
+
+          <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          비밀번호 확인 * <br><br>
+
+          <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          이름 * <br><br>
+
+          <input id="name" class="input_box" value="" placeholder="김네모">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          생년월일 * <br><br>
+
+          <select id="year" class="birth">
+            <option value="">년</option>
+            <option value="1999">1999</option>
+          </select>  
+          <select id="month" class="birth">
+            <option value="">월</option>
+            <option value="1">1</option>
+          </select>  
+          <select id="day" class="birth">
+            <option value="">일</option>
+            <option value="1">1</option>
+          </select>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          성별 * <br><br>
+
+          <select id="sex">
+            <option value="">성별</option>
+            <option value="1">여자</option>
+            <option value="2">남자</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          휴대전화 * <br><br>
+
+          <input id="phone" value="" placeholder="전화번호를 입력하세요">  
+          <input type="button" id="phone_confirm" value="인증번호"> 
+
+          <br>
+          <input id="phone_chk" class="input_box" value="" placeholder="인증번호를 입력하세요">
+        </td>
+      </tr>
+    </table>
+    
+    <div id="chk_area">
+      수신 안내 여부 * <br><br>
+      <input type="checkbox" id="msg_send" value="Y"> 문자수신
+      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      
+      <input type="checkbox" id="email_send" value="Y"> 이메일 수신
+      
+      <br><br><br>
+      선호하는 캠핑지 (선택)
+      <br><br>
+
+      <input type="checkbox" id="msg_send" value="Y"> 나홀로&emsp;&emsp;&emsp;
+      <input type="checkbox" id="msg_send" value="Y"> 가족&emsp;&emsp;&emsp;
+      <input type="checkbox" id="msg_send" value="Y"> 친구&emsp;&emsp;&emsp;
+      <input type="checkbox" id="email_send" value="Y"> 단체
+    </div>
+
+    <div id="button_area">
+      <input type="button" id="confirm" value="가입하기">
+    </div>
+
+  </form>
+
+</body>
+</html>
