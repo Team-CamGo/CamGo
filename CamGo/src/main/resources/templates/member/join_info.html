@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>회원가입 정보 입력</title>
+  <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+
   <style>
-    #logo {
-        margin: 100px 0 70px 0;
-        text-align: center;
+      .container {
+        margin-left:auto; 
+        margin-bottom:auto;
+      }
+
+      .join_info set-bg {
+        height:10%;
+      }
+
+      .join_text {
+        text-align: center; margin-top: 5%;
+      }
+
+      .join_info set-bg {
+        height:90%;
       }
 
       #guide {
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
+        text-align: right;
+        font-size: 11px;
       }
 
       #info_explain {
         margin-left: auto;
         margin-right: auto;
+        text-align: left;
       }
 
-      #info_explain td {
-        height:100px;
-        padding-bottom: 30px;
+      #info_explain td:first-child {
+        width: 150px;
+        height:70px;
+        /* padding-bottom: 30px; */
+      }
+
+      #info_explain td:last-child {
+        width: 350px;
+        height:70px;
+        /* padding-bottom: 30px; */
       }
 
       #email_first {
@@ -32,36 +53,33 @@
         height: 30px;
       }
 
-      .input_box {
-        width: 400px;
-        height: 30px;
+      .email_area {
+        display:inline-flex;
       }
-
-      #email_last {
-        width: 185px;
-        height: 40px;
-      }
-
-      .birth {
-        width: 132px;
-        height: 40px;
-      }
-
-      #sex {
-        width: 400px;
-        height: 40px;
-      }
-
+      
       #phone {
-        width: 300px;
-        height: 30px;
-        margin-right: 5px;
-        margin-bottom: 10px;
+        /* margin-right: 5px; */
+        margin-bottom: 5px;
       }
 
-      #phone_confirm {
-        width: 90px;
-        height: 35px;
+      .phone box {
+        width:330px;
+        height:30px;
+      }
+
+      .input_box {
+        width: 320px;
+        height: 30px;
+      }
+      
+      .birth {
+        display: inline-flex;
+        margin-right: 10px;
+      }
+      
+      .birth sel {
+        width: 180px;
+        height: 40px;
       }
 
       #phone_confirm:hover {
@@ -70,133 +88,233 @@
 
       #button_area {
         text-align: center;
+        padding-top: 50px;
+      }
+
+      #bottom_hr {
+        margin-top: 30px; 
+        margin-bottom: 30px;
+      }
+
+      #chk_send { 
+        font-weight: bold; 
+      }
+
+      #chk_option { 
+        font-weight: bold; 
       }
 
       #confirm {
         width: 400px;
         height: 50px;
-        margin-bottom:50px;
+        margin-bottom:10px;
+      }
+
+      #confirm:hover {
+        cursor: pointer;
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
       }
 
       #chk_area {
         margin-left: auto;
         margin-right: auto;
         width: 410px;
-        height: 180px;
+        height: 150px;
+        text-align: left;
       }
 
       </style>
-</head>
 <body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
-  <div id="logo">
-    <img id="logo_img" src="./img/logo.png" alt="로고">
-  </div>
+   <!-- Hero Section Begin -->
+   <section class="hero">
+    <div class="container">
+        <!-- <div class="row"> -->
+            <!-- <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All departments</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Fresh Meat</a></li>
+                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="#">Fruit & Nut Gifts</a></li>
+                        <li><a href="#">Fresh Berries</a></li>
+                        <li><a href="#">Ocean Foods</a></li>
+                        <li><a href="#">Butter & Eggs</a></li>
+                        <li><a href="#">Fastfood</a></li>
+                        <li><a href="#">Fresh Onion</a></li>
+                        <li><a href="#">Papayaya & Crisps</a></li>
+                        <li><a href="#">Oatmeal</a></li>
+                        <li><a href="#">Fresh Bananas</a></li>
+                    </ul>
+                </div>
+            </div> -->
 
-  <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
+            <!-- <div class="col-lg-9"> -->
+                <!-- <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="What do yo u need?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+65 11.188.888</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div> -->
 
-  <form id="join_info_form">
+                <div class="join_info set-bg">
+                  <div class="join_text">
+                    <h3><b>회원가입</b></h3>
+                    <hr>
+                      <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
+                  </div>
+                </div>                  
+                <div class="join_info set-bg">
+                  <div class="join_text">
+                    <form id="join_info_form">
+                    <table id="info_explain">
+                      <tr>
+                        <td>아이디 *</td>
+                        <td>
+                          <input id="email_first" value=""> @
+                          <div class="email_area">
+                            <select id="email_last">
+                              <option value="">이메일</option>
+                              <option value="1">gmail.com</option>
+                              <option value="2">naver.com</option>
+                              <option value="3">daum.net</option>
+                              <option value="4">직접입력</option>
+                            </select>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>비밀번호 *</td>
+                        <td>
+                          <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>비밀번호 확인 *</td>
+                        <td>
+                          <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>이름 *</td>
+                        <td>
+                          <input id="name" class="input_box" value="" placeholder="김네모">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>생년월일 *</td>
+                        <td>
+                          <div class="birth">
+                           <select id="year" class="birth sel">
+                              <option value="">년</option>
+                              <option value="1999">1999</option>
+                            </select>  
+                        </div>
+                        <div class="birth">
+                          <select id="month" class="birth sel">
+                            <option value="">월</option>
+                            <option value="1">1</option>
+                          </select>  
+                        </div>
+                        <div class="birth">
+                          <select id="day" class="birth sel">
+                            <option value="">일</option>
+                            <option value="1">1</option>
+                          </select>
+                        </div>
+                      </tr>
+                      <tr>
+                        <td>성별 *</td>
+                        <td>
+                          <select id="sex">
+                            <option value="">성별</option>
+                            <option value="1">여자</option>
+                            <option value="2">남자</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>휴대전화 *</td>
+                        <td>
+                          <input id="phone" class="phone box" value="" placeholder="전화번호를 입력하세요">  
+                          <input type="button" id="phone_confirm" value="인증번호"> 
+                          <input id="phone_chk" class="phone box" value="" placeholder="인증번호를 입력하세요">
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                        <td></td>
+                        <td>
+                        </td>
+                      </tr> -->
+                    </table>
 
-    <table id="info_explain">
-      <tr>
-        <td>
-          아이디 * <br><br>
+                    <hr id="bottom_hr">
+                    
+                    <div id="chk_area">
+                      <table id="chk tbl">
+                        <tr>
+                          <td id="chk_send">수신 안내 여부 *</td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="msg_send" value="Y"> 문자수신</td>
+                          <td><input type="checkbox" id="email_send" value="Y"> 이메일 수신</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td id="chk_option">선호하는 캠핑지 (선택)</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="likey" value="Y"> 나홀로&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 가족&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 친구&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 모임&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 이벤트
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
 
-          <input id="email_first" value=""> @ 
-          <select id="email_last">
-            <option value="">이메일</option>
-            <option value="1">gmail.com</option>
-            <option value="2">naver.com</option>
-            <option value="3">daum.net</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          비밀번호 * <br><br>
+                    <div id="button_area">
+                      <input type="button" id="confirm" value="가입하기">
+                    </div>
 
-          <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          비밀번호 확인 * <br><br>
+                    </form>
+                </div>
 
-          <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          이름 * <br><br>
+              </div>
+            <!-- </div> -->
+          </div>
 
-          <input id="name" class="input_box" value="" placeholder="김네모">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          생년월일 * <br><br>
+          <div style="text-align:center;">
 
-          <select id="year" class="birth">
-            <option value="">년</option>
-            <option value="1999">1999</option>
-          </select>  
-          <select id="month" class="birth">
-            <option value="">월</option>
-            <option value="1">1</option>
-          </select>  
-          <select id="day" class="birth">
-            <option value="">일</option>
-            <option value="1">1</option>
-          </select>
-
-        </td>
-      </tr>
-      <tr>
-        <td>
-          성별 * <br><br>
-
-          <select id="sex">
-            <option value="">성별</option>
-            <option value="1">여자</option>
-            <option value="2">남자</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          휴대전화 * <br><br>
-
-          <input id="phone" value="" placeholder="전화번호를 입력하세요">  
-          <input type="button" id="phone_confirm" value="인증번호"> 
-
-          <br>
-          <input id="phone_chk" class="input_box" value="" placeholder="인증번호를 입력하세요">
-        </td>
-      </tr>
-    </table>
-    
-    <div id="chk_area">
-      수신 안내 여부 * <br><br>
-      <input type="checkbox" id="msg_send" value="Y"> 문자수신
-      &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      
-      <input type="checkbox" id="email_send" value="Y"> 이메일 수신
-      
-      <br><br><br>
-      선호하는 캠핑지 (선택)
-      <br><br>
-
-      <input type="checkbox" id="msg_send" value="Y"> 나홀로&emsp;&emsp;&emsp;
-      <input type="checkbox" id="msg_send" value="Y"> 가족&emsp;&emsp;&emsp;
-      <input type="checkbox" id="msg_send" value="Y"> 친구&emsp;&emsp;&emsp;
-      <input type="checkbox" id="email_send" value="Y"> 단체
-    </div>
-
-    <div id="button_area">
-      <input type="button" id="confirm" value="가입하기">
-    </div>
-
-  </form>
+          </div>
+      </section>   
+      <!-- Hero Section End -->
+      <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+              
 
 </body>
 </html>
