@@ -23,7 +23,7 @@ public class memberController {
   }
 
   @RequestMapping("/myInfo")
-  public String join_info() {
+  public String myIfno() {
     return "/member/myInfo";
   }
 }
