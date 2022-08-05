@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import org.springframework.context.annotation.Conditional;
+// import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,8 +17,13 @@ public class memberController {
     return "/member/join";
   }
 
-  @RequestMapping("/join_info")
+  @RequestMapping("/joininfo")
   public String join_info() {
     return "/member/join_info";
+  }
+
+  @RequestMapping("/myInfo")
+  public String join_info() {
+    return "/member/myInfo";
   }
 }
