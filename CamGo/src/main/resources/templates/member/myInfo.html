@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>회원가입 정보 입력</title>
+  <title>회원정보 수정</title>
   <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
@@ -131,8 +131,21 @@
    <!-- Hero Section Begin -->
    <section class="hero">
     <div class="container">
-        <!-- <div class="row"> -->
-            <!-- <div class="col-lg-3">
+      <!-- <div class="col-lg-9"> -->
+          <div class="info_area">
+              <div class="info_text" style="background-color: lightgray; height: 150px; margin: 3% 0 3% 0; vertical-align: middle;">
+                  <form action="#">
+                      <div class="member_info" style="padding:2%;">
+                        <span>Mypage</span> <br><br>
+                        <span style="font-size:25px; color:gray; font-weight:bold;">회원이름</span> &nbsp;
+                        <a href="#">회원정보 수정</a>
+                      </div>
+                  </form>
+              </div>
+          <!-- </div> -->
+
+        <div class="row">
+            <div class="col-lg-3">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
@@ -152,39 +165,18 @@
                         <li><a href="#">Fresh Bananas</a></li>
                     </ul>
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div class="col-lg-9"> -->
-                <!-- <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
-                    </div>
-                </div> -->
 
-                <div class="join_info set-bg">
+                <!-- <div class="join_info set-bg">
                   <div class="join_text">
-                    <h3><b>회원가입</b></h3>
+                    <h3><b>회원정보 수정</b></h3>
                     <hr>
                       <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
                   </div>
-                </div>                  
-                <div class="join_info set-bg">
+                </div>  -->
+
+                <div class="join_info set-bg" style="padding-left:3%;">
                   <div class="join_text">
                     <form id="join_info_form">
                     <table id="info_explain">
@@ -298,14 +290,14 @@
                   </div>
 
                     <div id="button_area">
-                      <input type="button" id="confirm" value="가입하기">
+                      <input type="button" id="confirm" value="수정하기">
                     </div>
 
                     </form>
                 </div>
 
               </div>
-            <!-- </div> -->
+            </div>
           </div>
 
           <div style="text-align:center;">

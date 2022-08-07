@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="optionsFragment">
+
+    <style>
+        
+    </style>
+    <script>
+        function show_region_list()
+        {
+            if(document.getElementById("region_list").style.display=="none")
+            {
+                document.getElementById("region_list").style.display = "";
+            }
+            else
+            {
+                document.getElementById("region_list").style.display = "none";
+            }
+        }
+        function show_region_detail_list()
+        {
+            if(document.getElementById("region_list").selected=="none")
+            {
+                document.getElementById("region_list").style.display = "";
+            }
+            else
+            {
+                document.getElementById("region_list").style.display = "none";
+            }
+        }
+    </script>
+    <div class="col-lg-3 col-md-5">
+        <div class="sidebar">
+            <div class="sidebar__item">
+                <h4>Options</h4>
+                <ul>
+                    <li>
+                        <div onclick="show_region_list()"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Region</div>
+                        <div id="region_list" style="display:none;" onchange="show_region_detail_list()">
+                            <br>
+                            <select name="region_list" value="">
+                                <option value="">choose</option>
+                                <option value="1">Seoul</option>
+                                <option value="2">Incheon</option>
+                                <option value="3">Busan</option>
+                            </select>
+                            <br><br>
+                            <div id="region_detail_list" style="display:none;">
+                                <select name="region_detail_list" value="">
+                                    <option value="">choose</option>
+                                    <option value="1">Gangnam</option>
+                                    <option value="2">Mapo</option>
+                                    <option value="3">Abgujeong</option>
+                                    <option value="4">Guro</option>
+                                </select>
+                                <br><br>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">Date</a></li>
+                    <li><a href="#">Accommodations</a></li>
+                    <li><a href="#">Place</a></li>
+                    <li><a href="#">Utility</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar__item">
+                <h4>Price</h4>
+                <div class="price-range-wrap">
+                    <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                        data-min="10" data-max="540">
+                        <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                    </div>
+                    <div class="range-slider">
+                        <div class="price-input">
+                            <input type="text" id="minamount">
+                            <input type="text" id="maxamount">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar__item sidebar__item__color--option">
+                <h4>Type</h4>
+                <!-- <div class="sidebar__item__color sidebar__item__color--gray">
+                    <label for="gray">
+                        Gray
+                        <input type="radio" id="gray">
+                    </label>
+                </div> -->
+                
+                <!-- <div class="sidebar__item__color sidebar__item__color--black">
+                    <label for="black">
+                        Black
+                        <input type="radio" id="black">
+                    </label>
+                </div> -->
+
+                <div class="sidebar__item__color sidebar__item__color--blue">
+                    <label for="blue">
+                        Ocean
+                        <input type="radio" id="blue">
+                    </label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--red">
+                    <label for="red">
+                        Mountain
+                        <input type="radio" id="red">
+                    </label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--white">
+                    <label for="white">
+                        Hotel
+                        <input type="radio" id="white">
+                    </label>
+                </div>
+                <div class="sidebar__item__color sidebar__item__color--green">
+                    <label for="green">
+                        Camping
+                        <input type="radio" id="green">
+                    </label>
+                </div>
+            </div>
+            <div class="sidebar__item">
+                <h4>Number of People</h4>
+                <div class="sidebar__item__size">
+                    <label for="large">
+                        one
+                        <input type="radio" id="large">
+                    </label>
+                </div>
+                <div class="sidebar__item__size">
+                    <label for="medium">
+                        two
+                        <input type="radio" id="medium">
+                    </label>
+                </div>
+                <div class="sidebar__item__size">
+                    <label for="small">
+                        four
+                        <input type="radio" id="small">
+                    </label>
+                </div>
+                <div class="sidebar__item__size">
+                    <label for="tiny">
+                        five~
+                        <input type="radio" id="tiny">
+                    </label>
+                </div>
+            </div>
+            <div class="sidebar__item">
+                <div class="latest-product__text">
+                    <h4>recommend</h4>
+                    <div class="latest-product__slider owl-carousel">
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-1.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-2.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-3.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="latest-prdouct__slider__item">
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-1.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-2.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                            <a href="#" class="latest-product__item">
+                                <div class="latest-product__item__pic">
+                                    <img src="../img/latest-product/lp-3.jpg" alt="">
+                                </div>
+                                <div class="latest-product__item__text">
+                                    <h6>Crab Pool Security</h6>
+                                    <span>$30.00</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
