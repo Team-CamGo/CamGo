@@ -21,4 +21,19 @@ public class memberController {
   public String join_info() {
     return "/member/join_info";
   }
+
+  @RequestMapping("/login")
+  public String login() {
+    return "/member/login";
+  }
+
+  @RequestMapping("/findId")
+  public String findId() {
+    return "/member/findId";
+  }
+
+  @RequestMapping("/findPw")
+  public String findPw() {
+    return "/member/findPw";
+  }
 }
