@@ -8,24 +8,30 @@
     <script>
         function show_region_list()
         {
-            if(document.getElementById("region_list").style.display=="none")
+            if(document.getElementById("view_region_list").style.display=="none")
             {
-                document.getElementById("region_list").style.display = "";
+                document.getElementById("view_region_list").style.display = "";
             }
             else
             {
-                document.getElementById("region_list").style.display = "none";
+                document.getElementById("view_region_list").style.display = "none";
             }
         }
         function show_region_detail_list()
         {
-            if(document.getElementById("region_list").selected=="none")
+            var show_reg = document.getElementById("region_list");
+
+            console.log(show_reg);
+
+            if(show_reg.options[show_reg.selectedIndex].value=="none")
             {
-                document.getElementById("region_list").style.display = "";
+                console.log(1);
+                document.getElementById("region_detail_list").style.display = "none";
             }
             else
             {
-                document.getElementById("region_list").style.display = "none";
+                console.log(2);
+                document.getElementById("region_detail_list").style.display = "";
             }
         }
     </script>
@@ -36,9 +42,9 @@
                 <ul>
                     <li>
                         <div onclick="show_region_list()"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Region</div>
-                        <div id="region_list" style="display:none;" onchange="show_region_detail_list()">
+                        <div id="view_region_list">
                             <br>
-                            <select name="region_list" value="">
+                            <select name="region_list" value="" onchange="show_region_detail_list()" style="display:none;">
                                 <option value="">choose</option>
                                 <option value="1">Seoul</option>
                                 <option value="2">Incheon</option>
