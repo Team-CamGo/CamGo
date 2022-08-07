@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class campingController {
 
     @RequestMapping("/campinglist")
-    public String withdrawal(){
+    public String campingList(){
 
         return "/camping/campingList.html";
     }

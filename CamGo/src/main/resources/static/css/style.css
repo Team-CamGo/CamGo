@@ -1301,7 +1301,7 @@ ol {
 }
 
 .product__item__pic__hover {
-	position: static;
+	position: absolute;
 	left: 0;
 	bottom: -50px;
 	width: 100%;
@@ -1541,7 +1541,7 @@ ol {
 }
 
 .product__item__pic__hover {
-	position: static;
+	position: absolute;
 	left: 0;
 	bottom: -50px;
 	width: 100%;
