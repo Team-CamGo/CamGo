@@ -27,4 +27,9 @@ public class boardController {
         return "/board/request";
     }
 
+    @RequestMapping("/answer")
+    public String answer() {
+        return "/board/answer";
+    }
+
 }
