@@ -7,24 +7,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class boardController {
 
-    @RequestMapping("/notice")
-    public String notice() {
-        return "/board/notice";
-    }
+  @RequestMapping("/notice")
+  public String notice() {
+    return "/board/notice";
+  }
 
-    @RequestMapping("/modify")
-    public String modify() {
-        return "/board/modify";
-    }
+  @RequestMapping("/modify")
+  public String modify() {
+    return "/board/modify";
+  }
 
-    @RequestMapping("/write")
-    public String write() {
-        return "/board/write";
-    }
+  @RequestMapping("/write")
+  public String write() {
+    return "/board/write";
+  }
 
-    @RequestMapping("/request")
-    public String request() {
-        return "/board/request";
-    }
-
+  @RequestMapping("/request")
+  public String request() {
+    return "/board/request";
+  }
 }
