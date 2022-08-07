@@ -22,6 +22,11 @@ public class memberController {
     return "/member/join_info";
   }
 
+  @RequestMapping("/myInfo")
+  public String myInfo() {
+    return "/member/myInfo";
+  }
+
   @RequestMapping("/login")
   public String login() {
     return "/member/login";
