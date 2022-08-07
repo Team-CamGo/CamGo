@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>회원정보 수정</title>
+  <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+
+  <style>
+      .container {
+        margin-left:auto; 
+        margin-bottom:auto;
+      }
+
+      .join_info set-bg {
+        height:10%;
+      }
+
+      .join_text {
+        text-align: center; margin-top: 5%;
+      }
+
+      .join_info set-bg {
+        height:90%;
+      }
+
+      #guide {
+        text-align: right;
+        font-size: 11px;
+      }
+
+      #info_explain {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
+
+      #info_explain td:first-child {
+        width: 150px;
+        height:70px;
+        /* padding-bottom: 30px; */
+      }
+
+      #info_explain td:last-child {
+        width: 350px;
+        height:70px;
+        /* padding-bottom: 30px; */
+      }
+
+      #email_first {
+        width: 190px;
+        height: 30px;
+      }
+
+      .email_area {
+        display:inline-flex;
+      }
+      
+      #phone {
+        /* margin-right: 5px; */
+        margin-bottom: 5px;
+      }
+
+      .phone box {
+        width:330px;
+        height:30px;
+      }
+
+      .input_box {
+        width: 320px;
+        height: 30px;
+      }
+      
+      .birth {
+        display: inline-flex;
+        margin-right: 10px;
+      }
+      
+      .birth sel {
+        width: 180px;
+        height: 40px;
+      }
+
+      #phone_confirm:hover {
+        cursor: pointer;
+      }
+
+      #button_area {
+        text-align: center;
+        padding-top: 50px;
+      }
+
+      #bottom_hr {
+        margin-top: 30px; 
+        margin-bottom: 30px;
+      }
+
+      #chk_send { 
+        font-weight: bold; 
+      }
+
+      #chk_option { 
+        font-weight: bold; 
+      }
+
+      #confirm {
+        width: 400px;
+        height: 50px;
+        margin-bottom:10px;
+      }
+
+      #confirm:hover {
+        cursor: pointer;
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+      }
+
+      #chk_area {
+        margin-left: auto;
+        margin-right: auto;
+        width: 410px;
+        height: 150px;
+        text-align: left;
+      }
+
+      </style>
+<body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+
+   <!-- Hero Section Begin -->
+   <section class="hero">
+    <div class="container">
+      <!-- <div class="col-lg-9"> -->
+          <div class="info_area">
+              <div class="info_text" style="background-color: lightgray; height: 150px; margin: 3% 0 3% 0; vertical-align: middle;">
+                  <form action="#">
+                      <div class="member_info" style="padding:2%;">
+                        <span>Mypage</span> <br><br>
+                        <span style="font-size:25px; color:gray; font-weight:bold;">회원이름</span> &nbsp;
+                        <a href="#">회원정보 수정</a>
+                      </div>
+                  </form>
+              </div>
+          <!-- </div> -->
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All departments</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Fresh Meat</a></li>
+                        <li><a href="#">Vegetables</a></li>
+                        <li><a href="#">Fruit & Nut Gifts</a></li>
+                        <li><a href="#">Fresh Berries</a></li>
+                        <li><a href="#">Ocean Foods</a></li>
+                        <li><a href="#">Butter & Eggs</a></li>
+                        <li><a href="#">Fastfood</a></li>
+                        <li><a href="#">Fresh Onion</a></li>
+                        <li><a href="#">Papayaya & Crisps</a></li>
+                        <li><a href="#">Oatmeal</a></li>
+                        <li><a href="#">Fresh Bananas</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+                <!-- <div class="join_info set-bg">
+                  <div class="join_text">
+                    <h3><b>회원정보 수정</b></h3>
+                    <hr>
+                      <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
+                  </div>
+                </div>  -->
+
+                <div class="join_info set-bg" style="padding-left:3%;">
+                  <div class="join_text">
+                    <form id="join_info_form">
+                    <table id="info_explain">
+                      <tr>
+                        <td>아이디 *</td>
+                        <td>
+                          <input id="email_first" value=""> @
+                          <div class="email_area">
+                            <select id="email_last">
+                              <option value="">이메일</option>
+                              <option value="1">gmail.com</option>
+                              <option value="2">naver.com</option>
+                              <option value="3">daum.net</option>
+                              <option value="4">직접입력</option>
+                            </select>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>비밀번호 *</td>
+                        <td>
+                          <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>비밀번호 확인 *</td>
+                        <td>
+                          <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>이름 *</td>
+                        <td>
+                          <input id="name" class="input_box" value="" placeholder="김네모">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>생년월일 *</td>
+                        <td>
+                          <div class="birth">
+                           <select id="year" class="birth sel">
+                              <option value="">년</option>
+                              <option value="1999">1999</option>
+                            </select>  
+                        </div>
+                        <div class="birth">
+                          <select id="month" class="birth sel">
+                            <option value="">월</option>
+                            <option value="1">1</option>
+                          </select>  
+                        </div>
+                        <div class="birth">
+                          <select id="day" class="birth sel">
+                            <option value="">일</option>
+                            <option value="1">1</option>
+                          </select>
+                        </div>
+                      </tr>
+                      <tr>
+                        <td>성별 *</td>
+                        <td>
+                          <select id="sex">
+                            <option value="">성별</option>
+                            <option value="1">여자</option>
+                            <option value="2">남자</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>휴대전화 *</td>
+                        <td>
+                          <input id="phone" class="phone box" value="" placeholder="전화번호를 입력하세요">  
+                          <input type="button" id="phone_confirm" value="인증번호"> 
+                          <input id="phone_chk" class="phone box" value="" placeholder="인증번호를 입력하세요">
+                        </td>
+                      </tr>
+                      <!-- <tr>
+                        <td></td>
+                        <td>
+                        </td>
+                      </tr> -->
+                    </table>
+
+                    <hr id="bottom_hr">
+                    
+                    <div id="chk_area">
+                      <table id="chk tbl">
+                        <tr>
+                          <td id="chk_send">수신 안내 여부 *</td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox" id="msg_send" value="Y"> 문자수신</td>
+                          <td><input type="checkbox" id="email_send" value="Y"> 이메일 수신</td>
+                        </tr>
+                        <tr>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td id="chk_option">선호하는 캠핑지 (선택)</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="likey" value="Y"> 나홀로&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 가족&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 친구&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 모임&nbsp;
+                            <input type="checkbox" class="likey" value="Y"> 이벤트
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+
+                    <div id="button_area">
+                      <input type="button" id="confirm" value="수정하기">
+                    </div>
+
+                    </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;">
+
+          </div>
+      </section>   
+      <!-- Hero Section End -->
+      <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+              
+
+</body>
+</html>
