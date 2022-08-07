@@ -22,16 +22,8 @@ public class boardController {
     return "/board/write";
   }
 
-<<<<<<< HEAD
-  @RequestMapping("/request")
-  public String request() {
-    return "/board/request";
+  @RequestMapping("/answer")
+  public String answer() {
+    return "/board/answer";
   }
-=======
-    @RequestMapping("/answer")
-    public String answer() {
-        return "/board/answer";
-    }
-
->>>>>>> f2f9ce3d7bf2627c716e602a616c12743d651145
 }
