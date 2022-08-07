@@ -223,24 +223,26 @@
                             <div class="hero_list">
                                 <div class="viewExp">
                                     <tr>
-                                        <th scope="row">제목</th>
                                         <td>
-                                            <input type="text" size="60" name="subject" value="" class="v2_inp subject">
+                                            <span style="color: black;">추가 문의드립니다.</span>
                                         </td>
-                                        </tr>
+                                    </tr>
                                 </div>
                                 <div class="content">
-                                    <div class="viewContents">
+                                    <div class="viewContents" style="height: 400px;">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </div>
                                 </div>
-                                <div class="dateLine">
-                                    <span class="number" style="padding-left: 20px;">비밀글 체크</span>
-                                    <input type="checkbox" id="qst1" name="promise1" value="1">
-                                </div>	
                                 <div class="bottombox">
-                                    <input type="submit" value="등록" class="btn-black">
-                                    <input type="submit" value="목록" class="btn-black">
+                                    <input type="submit" value="수정" class="btn-black">
+                                    <input type="submit" value="삭제" class="btn-black">
+                                </div>
+                                <hr>
+                                <div class="content">
+                                    <div class="viewContents" style="height: 50px; width: 500px;">
+                                        <span style="color: black;">회원님 등록 완료되었습니다.</span>
+                                        <span><button type="submit" class="btn-black">등록</button></span>
+                                    </div>
                                 </div>
                             </div>               
                         </div>
@@ -715,7 +717,8 @@
         </div>
     </section> -->
     <!-- Blog Section End -->
-
     <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+
 </body>
+
 </html>
