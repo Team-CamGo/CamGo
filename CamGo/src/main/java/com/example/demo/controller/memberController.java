@@ -27,6 +27,11 @@ public class memberController {
     return "/member/myInfo";
   }
 
+  @RequestMapping("/adminInfo")
+  public String adminInfo() {
+    return "/member/adminInfo";
+  }
+
   @RequestMapping("/login")
   public String login() {
     return "/member/login";
