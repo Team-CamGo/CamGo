@@ -11,4 +11,9 @@ public class adminController {
   public String noticeWrite() {
     return "/admin/notice";
   }
+
+  @RequestMapping("/adminInfo")
+  public String adminInfo() {
+    return "/member/adminInfo";
+  }
 }
