@@ -13,16 +13,50 @@
         margin-bottom:auto;
       }
 
-      .join_info set-bg {
-        height:10%;
-      }
-
       .join_text {
-        text-align: center; margin-top: 5%;
+        text-align: center; 
+        margin-top: 5%;
       }
 
-      .join_info set-bg {
+      .join_info {
         height:90%;
+        padding-left: 18%;
+      }
+
+      .div_font {
+        font-size: 13px;
+        color: #1c1c1c;
+        line-height: 15px;
+      }
+
+      .member_name {
+        font-size:35px; 
+        color:gray; 
+        font-weight:bold;
+      }
+
+      .member_info {
+        padding:2% 1% 2% 2%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .info_text_area {
+        background-color: lightgray; 
+        height: 200px; 
+        margin: 3% 0 3% 0; 
+        vertical-align: middle;
+      }
+
+      .info_extra_area {
+        display:inline-block;
+        padding-top: 8%;
+        width: 400px;
+      }
+
+      .info_extra td {
+        width: 150px;
+        text-align: center;
       }
 
       #guide {
@@ -124,45 +158,115 @@
         text-align: left;
       }
 
+      /* 좌측 회원 메뉴바 */
+      .member_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -1px;
+      }
+
+      .member_area {
+        flex: 0 0 20%;
+        max-width: 25%;
+      }
+
+      .member_categories {
+        position: relative;
+      }
+
+      .member_categories_all {
+        background: #7fad39;
+        position: relative;
+        padding: 10px 25px 10px 40px;
+        cursor: pointer;
+      }
+
+      .member_categories i {
+        font-size: 16px;
+        color: #ffffff;
+        margin-right: 10px;
+      }
+      .member_bar {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .member_categories > ul {
+        display: block;
+        padding: 10px 10px 10px 40px;
+        border: 0.5px solid lightgray;
+      }
+
+      .member_categories > ul > li {
+        display: block;
+        padding: 5px;
+      }
+
+      .member_categories > ul > li > a {
+        font-size: 16px;
+        color: #1c1c1c;
+        line-height: 39px;
+        display: block;
+      }
       </style>
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
    <!-- Hero Section Begin -->
+   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- Hero Section End -->
    <section class="hero">
     <div class="container">
       <!-- <div class="col-lg-9"> -->
           <div class="info_area">
-              <div class="info_text" style="background-color: lightgray; height: 150px; margin: 3% 0 3% 0; vertical-align: middle;">
+              <div class="info_text_area">
                   <form action="#">
-                      <div class="member_info" style="padding:2%;">
-                        <span>Mypage</span> <br><br>
-                        <span style="font-size:25px; color:gray; font-weight:bold;">회원이름</span> &nbsp;
-                        <a href="#">회원정보 수정</a>
+                      <div class="member_info">
+                        <div>
+                          <span>Mypage</span> <br><br>
+                          
+                          <span class="member_name">회원이름</span> &nbsp;&nbsp;&nbsp;
+                          <a href="#" class="div_font">회원정보 수정</a>
+                          <br>
+                        
+                          &nbsp;<span class="div_font">캠핑 결제 횟수 : </span> <span class="div_font">3회</span>
+                        </div>
+                        <div class="info_extra_area">
+                          <table class="info_extra">
+                            <tr>
+                              <td>쿠&nbsp;&nbsp;&nbsp;&nbsp;폰</td>
+                              <td>문의내역</td>
+                              <td>예약내역</td>
+                              <td>리뷰내역</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>0</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                          </table>
+                        </div>
                       </div>
                   </form>
               </div>
           <!-- </div> -->
 
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+        <div class="member_row">
+            <div class="member_area">
+                <div class="member_categories">
+                    <div class="member_categories_all">
+                        <i class="member_bar"></i>
+                        <span></span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <li><a href="#">예약내역조회</a></li>
+                        <li><a href="#">1:1 문의</a></li>
+                        <li><a href="#">리뷰내역조회</a></li>
+                        <li><a href="#">좋아요</a></li>
                     </ul>
                 </div>
             </div>
@@ -176,7 +280,7 @@
                   </div>
                 </div>  -->
 
-                <div class="join_info set-bg" style="padding-left:3%;">
+                <div class="join_info">
                   <div class="join_text">
                     <form id="join_info_form">
                     <table id="info_explain">
@@ -221,19 +325,20 @@
                               <option value="">년</option>
                               <option value="1999">1999</option>
                             </select>  
-                        </div>
-                        <div class="birth">
-                          <select id="month" class="birth sel">
-                            <option value="">월</option>
-                            <option value="1">1</option>
-                          </select>  
-                        </div>
-                        <div class="birth">
-                          <select id="day" class="birth sel">
-                            <option value="">일</option>
-                            <option value="1">1</option>
-                          </select>
-                        </div>
+                          </div>
+                          <div class="birth">
+                            <select id="month" class="birth sel">
+                              <option value="">월</option>
+                              <option value="1">1</option>
+                            </select>  
+                          </div>
+                          <div class="birth">
+                            <select id="day" class="birth sel">
+                              <option value="">일</option>
+                              <option value="1">1</option>
+                            </select>
+                          </div>
+                        </td>
                       </tr>
                       <tr>
                         <td>성별 *</td>
@@ -304,7 +409,6 @@
 
           </div>
       </section>   
-      <!-- Hero Section End -->
       <th:block th:replace="fragments/footer :: footerFragment"></th:block>
               
 
