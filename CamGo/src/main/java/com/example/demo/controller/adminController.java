@@ -14,6 +14,6 @@ public class adminController {
 
   @RequestMapping("/adminInfo")
   public String adminInfo() {
-    return "/member/adminInfo";
+    return "/admin/adminInfo";
   }
 }
