@@ -11,4 +11,9 @@ public class campingController {
   public String campingList() {
     return "/camping/campingList.html";
   }
+
+  @RequestMapping("/campingdetail")
+  public String campingDetail() {
+    return "/camping/campingDetail.html";
+  }
 }

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Camgo | CampingDetail</title>
+    <th:block th:replace="fragments/head :: headFragment"></th:block>
+    <style>
+        .product__details__text .product__details__price__2 {
+            font-size: 20px;
+            color: #dd2222;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .pro-qty-2 {
+            width: 100px;
+            height: 30px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            background: #f5f5f5;
+            margin-bottom: 5px;
+        }
+
+        .pro-qty-2 input {
+            height: 100%;
+            width: 100%;
+            font-size: 16px;
+            color: #6f6f6f;
+            width: 30px;
+            border: none;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .pro-qty .qtybtn {
+            width: 35px;
+            font-size: 16px;
+            color: #6f6f6f;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .product__details__tab__2 {
+            padding-top: 25px;
+        }
+
+        .product__details__tab__2 .nav-tabs-2 {
+            border-bottom: none;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .product__details__tab__2 .nav-tabs-2:before {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            height: 1px;
+            width: 150px;
+            background: #7474745e;
+            content: "";
+        }
+
+        .product__details__tab__2 .nav-tabs-2:after {
+            position: absolute;
+            right: 0;
+            top: 12px;
+            height: 1px;
+            width: 150px;
+            background: #7474745e;
+            content: "";
+        }
+
+        .product__details__tab__2 .nav-tabs-2 li {
+            margin-bottom: 0;
+            margin-right: 65px;
+        }
+
+        .product__details__tab__2 .nav-tabs-2 li:last-child {
+            margin-right: 0;
+        }
+
+        .product__details__tab__2 .nav-tabs-2 li a {
+            font-size: 16px;
+            color: #999999;
+            font-weight: 700;
+            border: none;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+
+    <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+
+    <script>
+        function add_options(op)
+        {
+            // let sel = document.createElement('select');
+            // let cnt = document.getElementsByName("");
+            
+            // sel.setAttribute('name' , 'options'+cnt);
+            // console.log("selectbox 추가");
+            // <select name="camping_option_1" value="" onchange="add_options(this.value);">
+            //     <option value="">choose</option>
+            //     <option value="1">camping_option1</option>
+            //     <option value="2">camping_option1</option>
+            //     <option value="3">camping_option1</option>
+            // </select>
+        }
+    </script>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Camp Name</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <a href="./index.html">CampingList</a>
+                            <span>Camp Name</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                src="img/product/details/product-details-1.jpg" alt="">
+                        </div>
+                        <!-- <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
+                                src="img/product/details/thumb-1.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
+                                src="img/product/details/thumb-2.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
+                                src="img/product/details/thumb-3.jpg" alt="">
+                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
+                                src="img/product/details/thumb-4.jpg" alt="">
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <table class="product__details__text">
+                        <tr>
+                            <td colspan="4"><h3>Camp Name</h3></td>
+                        </tr>
+                        <tr class="product__details__rating">
+                            <td colspan="2">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i>&nbsp;4.5&nbsp;</i>
+                                &nbsp;&nbsp;&nbsp;
+                                <a href="#"><span>(18 reviews)</span></a>
+                            </td>
+                            <td width="15%">
+                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span> 12</a>
+                            </td>
+                            <td width="15%">
+                                <div class="share">
+                                    <span style="margin-right:5px;"><a href="#"><i class="fa fa-facebook"></i></a></span>
+                                    <span style="margin-right:5px;"><a href="#"><i class="fa fa-twitter"></i></a></span>
+                                    <span><a href="#"><i class="fa fa-instagram"></i></a></span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><span>Address</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><span>Phone number</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Options</b>&nbsp;&nbsp;<span>(최대인원, 수영장, 계곡, 바베큐 포함, ...)</span></td>
+                        </tr>
+                        <tr height="70px"><td colspan="4" style="vertical-align : bottom;"><b>예약신청</b></td></tr>
+                        <tr>
+                            <td colspan="4">
+                                <input type="date" value="" name="s_date">
+                                <input type="date" value="" name="e_date">
+                                <div class="pro-qty-2">
+                                    <span>-</span>
+                                    <input type="text" value="1">
+                                    <span>+</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <select name="camping_zone" value="">
+                                    <option value="">choose</option>
+                                    <option value="1">camping_zone1</option>
+                                    <option value="2">camping_zone2</option>
+                                    <option value="3">camping_zone3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <select name="camping_option" id="1" value="" onchange="add_options(this.value);">
+                                    <option value="">choose</option>
+                                    <option value="1">camping_option1</option>
+                                    <option value="2">camping_option1</option>
+                                    <option value="3">camping_option1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" class="product__details__price__2">70,000원</td>
+                            <td colspan="3" class="product__details__quantity">
+                                <a href="#" class="primary-btn">Booking</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab__2">
+                        <ul class="nav nav-tabs-2" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">캠핑장정보</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                    aria-selected="false">캠핑지개별정보</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">예약정보안내</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab"
+                                    aria-selected="false">찾아오시는길</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-5" role="tab"
+                                    aria-selected="false">리뷰<span>(1)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab"
+                                    aria-selected="false">문의</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div style="margin-top:25px;margin-bottom:5px"><b>운영형태</b></div>
+                                <table width="100%" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>오토캠핑</td>
+                                            <td>V</td>
+                                            <td>카라반</td>
+                                            <td></td>
+                                            <td>글램핑</td>
+                                            <td>V</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="100%" class="table table-bordered">
+                                    <div style="margin-top:25px;margin-bottom:5px"><b>편의시설</b></div>
+                                    <thead>
+                                        <tr>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>공용화장실</td>
+                                            <td>V</td>
+                                            <td>개별샤워실</td>
+                                            <td></td>
+                                            <td>공용화장실</td>
+                                            <td>V</td>
+                                            <td>개별화장실</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="margin-top:25px;margin-bottom:5px"><b>이용가능</b></div>
+                                <table width="100%" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                            <th>항목</th>
+                                            <th>여부</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>놀이시설</td>
+                                            <td>V</td>
+                                            <td>수영장</td>
+                                            <td></td>
+                                            <td>애견동반</td>
+                                            <td>V</td>
+                                            <td>산책로</td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div width="100%" style="background-color:#7474745e;height:1px;margin-top:40px;margin-bottom:40px"></div>
+                                <table>
+                                    <tr>
+                                        <th>소개글</th>
+                                    </tr>
+                                    <tr>
+                                        <td>^^~</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>Products Infomation</h6>
+                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
+                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
+                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
+                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
+                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
+                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
+                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
+                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+                                        Proin eget tortor risus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+
+    <!-- Related Product Section Begin -->
+    <section class="related-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>Related Product</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
+                            <ul class="product__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#">Crab Pool Security</a></h6>
+                            <h5>$30.00</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Product Section End -->
+
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+
+</body>
+
+</html>

@@ -3,55 +3,62 @@
     <th:block th:fragment="optionsFragment">
 
     <style>
-        
+        input[type="date"] {
+            width:115px;
+        }
+
+        .sidebar__item .options_list li {
+            margin-bottom : 10px;
+        }
+
+        .sidebar__item .options_list li .option_detail {
+            margin-top : 10px;
+        }
     </style>
     <script>
-        function show_region_list()
+        document.addEventListener("DOMContentLoaded", ready);
+
+    	function ready(){
+    		close_list();
+    	}
+
+        function close_list()
         {
-            if(document.getElementById("view_region_list").style.display=="none")
+            for(var i=0; i<document.getElementsByName("view_options_list").length; i++)
             {
-                document.getElementById("view_region_list").style.display = "";
+                document.getElementsByName("view_options_list")[i].style.display="none";
+            }
+        }
+
+        function show_list(type="")
+        {
+            if(document.getElementById("view_"+type).style.display=="")
+            {
+                document.getElementById("view_"+type).style.display="none";
             }
             else
             {
-                document.getElementById("view_region_list").style.display = "none";
+                document.getElementById("view_"+type).style.display = "";
             }
         }
-        function show_region_detail_list()
-        {
-            var show_reg = document.getElementById("region_list");
-
-            console.log(show_reg);
-
-            if(show_reg.options[show_reg.selectedIndex].value=="none")
-            {
-                console.log(1);
-                document.getElementById("region_detail_list").style.display = "none";
-            }
-            else
-            {
-                console.log(2);
-                document.getElementById("region_detail_list").style.display = "";
-            }
-        }
+        
     </script>
     <div class="col-lg-3 col-md-5">
         <div class="sidebar">
             <div class="sidebar__item">
                 <h4>Options</h4>
-                <ul>
+                <ul class="options_list">
                     <li>
-                        <div onclick="show_region_list()"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Region</div>
-                        <div id="view_region_list">
-                            <br>
-                            <select name="region_list" value="" onchange="show_region_detail_list()" style="display:none;">
+                        <div onclick="show_list('region')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Region</div>
+                        <div name="view_options_list" id="view_region" class="option_detail">
+                            <select name="region_list" value="" onchange="" style="display:none;">
                                 <option value="">choose</option>
                                 <option value="1">Seoul</option>
                                 <option value="2">Incheon</option>
                                 <option value="3">Busan</option>
                             </select>
                             <br><br>
-                            <div id="region_detail_list" style="display:none;">
+                            <div id="region_detail_list">
                                 <select name="region_detail_list" value="">
                                     <option value="">choose</option>
                                     <option value="1">Gangnam</option>
@@ -63,10 +70,64 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="#">Date</a></li>
-                    <li><a href="#">Accommodations</a></li>
-                    <li><a href="#">Place</a></li>
-                    <li><a href="#">Utility</a></li>
+                    <li>
+                        <div onclick="show_list('date')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Date</div>
+                        <div class="option_detail" name="view_options_list" id="view_date">
+                            시작 <input type="date" value=""><br>
+                            퇴실 <input type="date" value="">
+                        </div>
+                    </li>
+                    <li>
+                        <div onclick="show_list('accommodations')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Accommodations</div>
+                        <div class="option_detail" name="view_options_list" id="view_accommodations">
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    camping
+                                    <input type="checkbox" id="large">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    hotel
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div onclick="show_list('place')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Place</div>
+                        <div class="option_detail" name="view_options_list" id="view_place">
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    ocean
+                                    <input type="checkbox" id="large">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    mountain
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>
+                        </div>
+                        </li>
+                    <li>
+                        <div onclick="show_list('utility')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Utility</div>
+                        <div class="option_detail" name="view_options_list" id="view_utility">
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    pool
+                                    <input type="checkbox" id="large">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    BBQ
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
             
@@ -85,74 +146,6 @@
                             <input type="text" id="maxamount">
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="sidebar__item sidebar__item__color--option">
-                <h4>Type</h4>
-                <!-- <div class="sidebar__item__color sidebar__item__color--gray">
-                    <label for="gray">
-                        Gray
-                        <input type="radio" id="gray">
-                    </label>
-                </div> -->
-                
-                <!-- <div class="sidebar__item__color sidebar__item__color--black">
-                    <label for="black">
-                        Black
-                        <input type="radio" id="black">
-                    </label>
-                </div> -->
-
-                <div class="sidebar__item__color sidebar__item__color--blue">
-                    <label for="blue">
-                        Ocean
-                        <input type="radio" id="blue">
-                    </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--red">
-                    <label for="red">
-                        Mountain
-                        <input type="radio" id="red">
-                    </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--white">
-                    <label for="white">
-                        Hotel
-                        <input type="radio" id="white">
-                    </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--green">
-                    <label for="green">
-                        Camping
-                        <input type="radio" id="green">
-                    </label>
-                </div>
-            </div>
-            <div class="sidebar__item">
-                <h4>Number of People</h4>
-                <div class="sidebar__item__size">
-                    <label for="large">
-                        one
-                        <input type="radio" id="large">
-                    </label>
-                </div>
-                <div class="sidebar__item__size">
-                    <label for="medium">
-                        two
-                        <input type="radio" id="medium">
-                    </label>
-                </div>
-                <div class="sidebar__item__size">
-                    <label for="small">
-                        four
-                        <input type="radio" id="small">
-                    </label>
-                </div>
-                <div class="sidebar__item__size">
-                    <label for="tiny">
-                        five~
-                        <input type="radio" id="tiny">
-                    </label>
                 </div>
             </div>
             <div class="sidebar__item">
