@@ -6,24 +6,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class adminController {
-
-  @RequestMapping("/noticeWrite")
-  public String noticeWrite() {
+    /*
+        공지사항리스트 페이지
+    */
+    @RequestMapping("/noticeWrite")
+    public String noticeWrite() {
     return "/admin/notice";
-  }
+    }
 
-  @RequestMapping("/adminInfo")
-  public String adminInfo() {
+    /*
+        사업자회원관리리스트 페이지
+     */
+    @RequestMapping("/adminInfo")
+    public String adminInfo() {
     return "/admin/adminInfo";
-  }
+    }
 
-  @RequestMapping("/campingCare")
-  public String campingCare() {
+    /*
+        캠핑지 관리리스트 페이지
+     */
+    @RequestMapping("/campingCare")
+    public String campingCare() {
     return "/admin/campingCare.html";
-  }
+    }
 
-  @RequestMapping("/campingOption")
-  public String campingOption() {
+    /*
+        캠핑지 옵션관리리스트 페이지
+     */
+    @RequestMapping("/campingOption")
+    public String campingOption() {
     return "/admin/campingOption.html";
-  }
+    }
 }
