@@ -16,4 +16,14 @@ public class adminController {
   public String adminInfo() {
     return "/admin/adminInfo";
   }
+
+  @RequestMapping("/campingCare")
+  public String campingCare() {
+    return "/admin/campingCare.html";
+  }
+
+  @RequestMapping("/campingOption")
+  public String campingOption() {
+    return "/admin/campingOption.html";
+  }
 }

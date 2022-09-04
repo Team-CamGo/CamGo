@@ -19,7 +19,7 @@
       }
 
       .list_area {
-        height:600px;
+        height:900px;
         width: 75%;
         padding-left: 5%;
       }
@@ -69,7 +69,7 @@
       #info_explain th {
         width: 100%;
         height:50px;
-        border-bottom: 4px solid darkgray;
+       border-bottom: 0px solid #ffffff;
       }
       
       #info_explain td:first-child {
@@ -87,6 +87,14 @@
       
       #info_explain tr {
         border-bottom: 1px solid lightgray;
+      }
+
+      #res {
+        width: 150px;
+        height:50px;
+        text-align: left;
+        padding: 0;
+        border-bottom: 4px solid darkgray;
       }
 
       /* 상태 - 승인, 거절 버튼 */
@@ -172,6 +180,11 @@
         display: block;
       }
 
+      .res_area {
+        display: inline-table;
+        margin-right: 55px;
+      }
+
       .paging {
         margin-top: 5%;
       }
@@ -230,44 +243,62 @@
                       <form id="listinfo_form">
                       <table id="info_explain">
                         <tr>
-                          <th colspan="5">사업자 회원관리</th>
+                          <th colspan="7">캠핑지 옵션관리</th>
+                        </tr>
+                        <tr>
+                          <td id="res" colspan="7">
+                            <div>
+                              <div class="res_area">접수&nbsp;&nbsp;1</div>
+                              <div class="res_area">정정중&nbsp;&nbsp;0</div>
+                              <div class="res_area">승인&nbsp;&nbsp;1</div>
+                              <div class="res_area">삭제완료&nbsp;&nbsp;1</div>
+                              <div class="res_area">거절&nbsp;&nbsp;1</div>
+                              <div class="res_area">&nbsp;&nbsp;</div>
+                            </div>
+                          </td>
                         </tr>
                         <tr>
                           <td>No</td>
-                          <td>회원명</td>
+                          <td>캠핑장명</td>
+                          <td>신청회원</td>
+                          <td>캠핑지옵션</td>
                           <td>신청사유</td>
                           <td>상태</td>
                           <td>거절사유</td>
                         </tr>
                         <tr>
                           <td>1</td>
-                          <td>회원명</td>
-                          <td>신청</td>
-                          <td>승인</td>
+                          <td>A캠핑장</td>
+                          <td>김이박</td>
+                          <td>여름 물놀이 세트</td>
+                          <td>옵션 추가</td>
+                          <td>접수</td>
                           <td></td>
                         </tr>
                         <tr>
                           <td>2</td>
-                          <td>회원명</td>
-                          <td>신청</td>
+                          <td>B캠핑장</td>
+                          <td>사가지</td>
+                          <td>겨울 불꽃놀이<br>세트</td>
+                          <td>추가</td>
                           <td style="color:brown; font-weight:bold;">거절</td>
-                          <td>사업자등록증 미등록</td>
+                          <td>불법</td>
                         </tr>
                         <tr>
                           <td>3</td>
-                          <td>회원명</td>
-                          <td>신청</td>
+                          <td>C캠핑장</td>
+                          <td>오당당</td>
+                          <td>특제 바베큐</td>
+                          <td>옵션 추가</td>
                           <td>승인</td>
-                          <td></td>
                         </tr>
                         <tr>
                           <td>4</td>
-                          <td>회원명</td>
-                          <td>탈퇴</td>
-                          <td>
-                            <input type="button" id="confirm" class="btn" value="승인">
-                            <input type="button" id="cancle" class="btn" value="거절">
-                          </td>
+                          <td>D캠핑장</td>
+                          <td>이정정</td>
+                          <td>웰컴 생수 제공</td>
+                          <td>옵션 삭제</td>
+                          <td>삭제</td>
                           <td></td>
                         </tr>
                       </table>
