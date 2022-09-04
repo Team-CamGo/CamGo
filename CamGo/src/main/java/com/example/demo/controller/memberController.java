@@ -41,4 +41,16 @@ public class memberController {
   public String findPw() {
     return "/member/findPw";
   }
+
+  // 추가 
+  @RequestMapping("/review")
+  public String review() {
+    return "/member/review";
+  }
+
+  // 추가 
+  @RequestMapping("/inquiry")
+  public String inquiry() {
+    return "/member/inquiry";
+  }
 }
