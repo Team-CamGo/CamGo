@@ -19,12 +19,27 @@ public class memberController {
 
   @RequestMapping("/joininfo")
   public String join_info() {
-    return "/member/join_info";
+    return "/member/joinInfo";
   }
 
   @RequestMapping("/myInfo")
   public String myInfo() {
     return "/member/myInfo";
+  }
+
+  @RequestMapping("/reservation")
+  public String reservation() {
+    return "/member/reservation";
+  }
+
+  @RequestMapping("/buyProduct")
+  public String buy_product() {
+    return "/member/buyProduct";
+  }
+
+  @RequestMapping("/like")
+  public String like_camping() {
+    return "/member/likeCamping";
   }
 
   @RequestMapping("/login")

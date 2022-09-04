@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>예약내역조회</title>
+  <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+
+  <style>
+      .container {
+        margin-left:auto; 
+        margin-bottom:auto;
+      }
+
+      .list_text {
+        text-align: center; 
+        margin-top: 3%;
+      }
+
+      .list_area {
+        height:900px;
+        width: 75%;
+        padding-left: 5%;
+      }
+
+      .div_font {
+        font-size: 13px;
+        color: #1c1c1c;
+        line-height: 15px;
+      }
+
+      .member_name {
+        font-size:35px; 
+        color:gray; 
+        font-weight:bold;
+      }
+
+      .member_info {
+        padding:2% 1% 2% 2%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .info_text_area {
+        background-color: lightgray; 
+        height: 200px; 
+        margin: 3% 0 3% 0; 
+        vertical-align: middle;
+      }
+
+      .info_extra_area {
+        display:inline-block;
+        padding-top: 8%;
+        width: 400px;
+      }
+
+      .info_extra td {
+        width: 150px;
+        text-align: center;
+      }
+
+      #info_explain {
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
+        text-align: left;
+      }
+
+      #info_explain th {
+        width: 100%;
+        height:50px;
+      }
+      
+      #res {
+        width: 150px;
+        height:50px;
+        text-align: left;
+        padding: 0;
+        border-bottom: 4px solid darkgray;
+      }
+
+      #info_explain td {
+        width: 200px;
+        height: 70px;
+        text-align: center;
+      }
+
+      #info_explain tr:first-child {
+        border-bottom: 1px solid #ffffff;
+      }
+
+      #info_explain tr {
+        border-bottom: 1px solid lightgray;
+      }
+
+      #res_txt {
+        margin-right: 35px;
+      }
+
+      .btn_area {
+        display: contents;
+        margin-right: 55px;
+      }
+
+      .btn {
+        border: 1px solid gray;
+        height: 32px;
+        line-height: 15px;
+        background-color: lightgray;
+      }
+
+      .date {
+        background-color: #ffffff;
+      }
+
+      .res_area {
+        display: inline-table;
+        margin-right: 55px;
+      }
+
+      #confirm {
+        width: 400px;
+        height: 50px;
+        margin-bottom:10px;
+      }
+
+      #confirm:hover {
+        cursor: pointer;
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+      }
+
+      /* 좌측 회원 메뉴바 */
+      .member_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -1px;
+      }
+
+      .member_area {
+        flex: 0 0 20%;
+        max-width: 25%;
+      }
+
+      .member_categories {
+        position: relative;
+      }
+
+      .member_categories_all {
+        background: #7fad39;
+        position: relative;
+        padding: 10px 25px 10px 40px;
+        cursor: pointer;
+      }
+
+      .member_categories i {
+        font-size: 16px;
+        color: #ffffff;
+        margin-right: 10px;
+      }
+      .member_bar {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .member_categories > ul {
+        display: block;
+        padding: 10px 10px 10px 40px;
+        border: 0.5px solid lightgray;
+      }
+
+      .member_categories > ul > li {
+        display: block;
+        padding: 5px;
+      }
+
+      .member_categories > ul > li > a {
+        font-size: 16px;
+        color: #1c1c1c;
+        line-height: 39px;
+        display: block;
+      }
+
+      /* 페이징 */
+      .paging {
+        margin-top: 5%;
+      }
+
+      .paging > a {
+        font-size: 15px;
+        color: #1c1c1c;
+        line-height: 15px;
+      }
+      </style>
+<body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+
+   <!-- Hero Section Begin -->
+   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- Hero Section End -->
+   <section class="hero">
+    <div class="container">
+      <!-- <div class="col-lg-9"> -->
+          <div class="info_area">
+              <div class="info_text_area">
+                  <form action="#">
+                      <div class="member_info">
+                        <div>
+                          <span>Mypage</span> <br><br>
+                          
+                          <span class="member_name">회원이름</span> &nbsp;&nbsp;&nbsp;
+                          <a href="#" class="div_font">회원정보 수정</a>
+                          <br>
+                        
+                          &nbsp;<span class="div_font">캠핑 결제 횟수 : </span> <span class="div_font">3회</span>
+                        </div>
+                        <div class="info_extra_area">
+                          <table class="info_extra">
+                            <tr>
+                              <td>쿠&nbsp;&nbsp;&nbsp;&nbsp;폰</td>
+                              <td>문의내역</td>
+                              <td>예약내역</td>
+                              <td>리뷰내역</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>0</td>
+                              <td>1</td>
+                              <td>1</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                  </form>
+              </div>
+          <!-- </div> -->
+
+        <div class="member_row">
+            <div class="member_area">
+                <div class="member_categories">
+                    <div class="member_categories_all">
+                        <i class="member_bar"></i>
+                        <span></span>
+                    </div>
+                    <ul>
+                        <li><a href="#">예약내역조회</a></li>
+                        <li><a href="#">결제내역조회</a></li>
+                        <li><a href="#">1:1 문의</a></li>
+                        <li><a href="#">리뷰내역조회</a></li>
+                        <li><a href="#">좋아요</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="list_area">
+              <div class="list_text">
+                <form id="listinfo_form">
+                <table id="info_explain">
+                  <tr>
+                    <th colspan="7">
+                      <span id="res_txt">예약내역조회</span>
+                        <div class="btn_area">
+                          <input type="button" class="btn" value="1주일">
+                          <input type="button" class="btn" value="1개월">
+                          <input type="button" class="btn" value="3개월">
+                          <input type="button" class="btn" value="전체시기">
+      
+                          <input type="date" class="btn date" value="">&nbsp;-&nbsp;
+                          <input type="date" class="btn date" value="">
+                          <input type="button" class="btn lookup" value="조회">
+                        </div>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td id="res" colspan="7">
+                      <div>
+                        <div class="res_area">예약대기&nbsp;&nbsp;0</div>
+                        <div class="res_area">예약완료&nbsp;&nbsp;0</div>
+                        <div class="res_area">사용중&nbsp;&nbsp;0</div>
+                        <div class="res_area">사용완료&nbsp;&nbsp;2</div>
+                        <div class="res_area">예약취소&nbsp;&nbsp;1</div>
+                        <div class="res_area">환불완료&nbsp;&nbsp;0</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>예약번호</td>
+                    <td>상품정보</td>
+                    <td>주문일자</td>
+                    <td>예약금액</td>
+                    <td>예약날짜</td>
+                    <td>예약옵션</td>
+                    <td>예약상태</td>
+                  </tr>
+                  <tr>
+                    <td>12345</td>
+                    <td><img src='img/product/details/product-details-1.jpg'></td>
+                    <td>2022-03-27</td>
+                    <td>123,000</td>
+                    <td>2022-03-28 ~ <br> 2022-03-29</td>
+                    <td>성인 2인</td>
+                    <td>
+                      <span>사용완료</span> <br>
+                      <input type="button" class="btn res" value="후기작성">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12346</td>
+                    <td><img src="img/product/details/product-details-2.jpg"></td>
+                    <td>2022-03-29</td>
+                    <td>220,000</td>
+                    <td>2022-03-30 ~ <br> 2022-04-01</td>
+                    <td>성인 3인</td>
+                    <td>
+                      <span>사용완료</span> <br>
+                      <input type="button" class="btn res" value="후기작성">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12347</td>
+                    <td><img src="img/product/details/product-details-3.jpg"></td>
+                    <td>2022-04-03</td>
+                    <td>28,000</td>
+                    <td>2022-04-10 ~ <br> 2022-04-12</td>
+                    <td>성인 4인</td>
+                    <td>
+                      <span>예약확정</span> <br>
+                      <input type="button" class="btn res" value="취소문의">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12348</td>
+                    <td><img src="img/product/details/product-details-5.jpg"></td>
+                    <td>2022-04-20</td>
+                    <td>33,000</td>
+                    <td>2022-04-28 ~ <br> 2022-04-29</td>
+                    <td>성인 5인</td>
+                    <td>
+                      <span>예약확정</span> <br>
+                      <input type="button" class="btn res" value="취소문의">
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="paging">
+                  <<&nbsp;&nbsp;<a href="#">1</a>&nbsp;&nbsp;<a href="#">2</a>&nbsp;&nbsp;<a href="#">3</a>&nbsp;&nbsp;>>
+                </div>
+
+              </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+
+      </div>
+  </section>   
+  <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+              
+
+</body>
+</html>
