@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8">
@@ -75,13 +75,17 @@
     </style>
 </head>
 
-<body onload="changeList('list')">
+<body>
 
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
     <th:block th:replace="fragments/hero :: heroFragment"></th:block>
 
     <script>
+        window.onload = function(){
+            changeList(list);
+        }
+
         function changeList(type)
         {
             console.log(type);
@@ -272,13 +276,13 @@
                         <table width="100%">
                             <tr>
                                 <td width="30%">
-                                    <img src="../img/product/product-1.jpg">
+                                    <a href="campingdetail"><span><img src="../img/product/product-1.jpg"></span></a>
                                 </td>
                                 <td width="70%">
                                     <table width="100%">
                                         <tr>
                                             <td width="60%">
-                                                <a href="#" style="font-weight:bold;color:#7fad39">CampingName</a>
+                                                <a href="campingdetail" style="font-weight:bold;color:#7fad39">CampingName</a>
                                             </td>
                                             <td width="40%">
                                                 <ul class="product__item__pic__hover__list">

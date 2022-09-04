@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="campDetailListFragment">
+
+    <style>
+        .list_img_container {
+            height:22vw;
+            width:22vw;
+        }
+        .list_img_container img {
+            height:100%;
+            width:100%;
+        }
+        .img_container {
+            height:25vw;
+            width:100%;
+            background-color: rgb(231, 231, 231);
+        }
+        .img_container .img_back {
+            margin-left: auto;
+            margin-right: auto;
+            height:25vw;
+            width:25vw;
+        }
+        .img_container .img_back .img_box {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script>
+        function view_camp_detail(v)
+        {
+            let cd = document.getElementById("campDetail"+v);
+
+            if(cd.style.display == "none")
+            {
+                cd.style.display = "";
+            }
+            else
+            {
+                cd.style.display = "none";
+            }
+        }
+    </script>
+
+    <table width="100%" height="20px">
+        <tr>
+            <td style="font-size:20px;font-weight:bold;">객실 목록</td>
+        </tr>
+    </table>
+
+    <hr class="division"></hr>
+
+    <table width="100%">
+        <tr>
+            <td>
+                <table width="100%" onclick="view_camp_detail(1)" onmouseover="this.style.cursor='pointer'">
+                    <tr>
+                        <td width="30%">
+                            <div class="list_img_container">
+                                <img src="../img/product/product-1.jpg">
+                            </div>
+                        </td>
+                        <td width="70%">
+                            <table width="100%">
+                                <tr>
+                                    <td style="font-size:20px;font-weight:bold;color:#7fad39">
+                                        캠핑지 이름
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        [option/option/...]
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        기본 2인 / 최대 4인
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="color:gray">
+                                        ( 1인 추가 금액 20,000원 )
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        예약가능 [5/10]
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table width="80%" id="campDetail1" style="display:none;margin-left:auto;margin-right:auto">
+                    <tr>
+                        <td >
+                            <div class="img_container">
+                                <div class="img_container img_back">
+                                    <img class="img_container img_back img_box" src="../img/product/product-1.jpg">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr><td><hr style="color: #7474745e;margin-bottom:5px"></hr></td></tr>
+                    <tr>
+                        <td style="padding-left:15px;padding-top:5px">
+                            ㅁ 입실시간 안내<br>
+                            입실시간 : 13:00 ~ 19:00<br>
+                            퇴실시간 : 11:00<br><br>
+
+                            [상세 내용]<br>
+                            * 상품설명 : 캠핑사이트<br>
+                            * 종류 : 강자갈<br>
+                            * 크기 : 7m X 4m<br><br>
+
+                            * 사이트 안내 :<br>
+                            - 가능 : 차박, 루프탑텐트<br>
+                            - 불가능 : 도킹텐트 , 캠핑카, 캠핑트레일러, 카라반 불가<br><br>
+
+                            * 사이트옆 주차 가능<br>
+                            * 부대 시설 : 공용 화장실, 개수대, 샤워실, 매점, 카페, 영농체험장, 갤러리, 디자인스쿨<br><br>
+
+                            * 사이트 기준 허용 장비 : 텐트 1동, 타프 1대, 차량 1대<br>
+                            ※ 야영장 무인출입차단기가 있어서 1사이트 1대의 차량출입등록이 가능합니다. 등록되지 않는 차량에 대해서는 차단기가 열리지 않습니다. 예약시 예약자 추가정보란에 차량번호 정확히 입력 바랍니다. 동반차량은 울미숲 공용주차장에 주차가능합니다.<br><br>
+
+                            [인원 안내]<br>
+                            *기준인원 4인 최대 인원 5인<br>
+                            기준인원 초과시 1박당 1인 1만원 추가요금 발생합니다. 옵션에서 선택 가능 합니다<br><br>
+
+                            [매너 타임]<br>
+                            * 매너 타임 : 오후 10시~아침 7시<br>
+                            - 음주가무, 고성방가, 차량 이동 금지<br>
+                            - 밤 10시 이후 고성방가나 시끄러운 술자리는 타인에게 불쾌감을 주는 행위이므로 캠핑 에티켓을 지켜주시기 바랍니다<br><br>
+
+                            [그 외 안내 사항]<br>
+                            * 방문객 금지합니다<br>
+                            * 순간 전력이 높은 전열 제품 사용 금지 (법적 전력량 600W이하로 제한)<br><br>
+
+                            [공용샤워실, 개수대 사용시간]<br>
+                            샤워실, 개수대 모두 오전 7시부터 저녁 9시까지만 사용가능합니다.<br><br>
+
+                            [시설정보]<br>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</html>

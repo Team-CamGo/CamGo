@@ -90,6 +90,11 @@
             padding: 0;
         }
 
+        .division {
+            color: #7474745e;
+            margin-bottom:5px;
+        }
+
     </style>
 </head>
 
@@ -113,6 +118,7 @@
             //     <option value="3">camping_option1</option>
             // </select>
         }
+
     </script>
 
     <!-- Breadcrumb Section Begin -->
@@ -262,111 +268,28 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div style="margin-top:25px;margin-bottom:5px"><b>운영형태</b></div>
-                                <table width="100%" class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>오토캠핑</td>
-                                            <td>V</td>
-                                            <td>카라반</td>
-                                            <td></td>
-                                            <td>글램핑</td>
-                                            <td>V</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table width="100%" class="table table-bordered">
-                                    <div style="margin-top:25px;margin-bottom:5px"><b>편의시설</b></div>
-                                    <thead>
-                                        <tr>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>공용화장실</td>
-                                            <td>V</td>
-                                            <td>개별샤워실</td>
-                                            <td></td>
-                                            <td>공용화장실</td>
-                                            <td>V</td>
-                                            <td>개별화장실</td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div style="margin-top:25px;margin-bottom:5px"><b>이용가능</b></div>
-                                <table width="100%" class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                            <th>항목</th>
-                                            <th>여부</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>놀이시설</td>
-                                            <td>V</td>
-                                            <td>수영장</td>
-                                            <td></td>
-                                            <td>애견동반</td>
-                                            <td>V</td>
-                                            <td>산책로</td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div width="100%" style="background-color:#7474745e;height:1px;margin-top:40px;margin-bottom:40px"></div>
-                                <table>
-                                    <tr>
-                                        <th>소개글</th>
-                                    </tr>
-                                    <tr>
-                                        <td>^^~</td>
-                                    </tr>
-                                </table>
+                                <!--캠핑장정보-->
+                                <th:block th:replace="camping/campingInfo :: campingInfoFragment"></th:block>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                
+                                <!--캠핑지개별정보-->
+                                <th:block th:replace="camping/campDetailList :: campDetailListFragment"></th:block>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <h6>Products Infomation</h6>
-                                    <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                        Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                        Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                        sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                        eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                        Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                        sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                        diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                        ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                        Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                        Proin eget tortor risus.</p>
-                                </div>
+                                <!--예약정보안내-->
+                                <th:block th:replace="camping/campingRsvInfo :: campingRsvInfoFragment"></th:block>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <!--찾아오시는길-->
+                                <th:block th:replace="camping/campingMap :: campingMapFragment"></th:block>
+                            </div>
+                            <div class="tab-pane" id="tabs-5" role="tabpanel">
+                                <!--리뷰-->
+                                <th:block th:replace="camping/campingReview :: campingReviewFragment"></th:block>
+                            </div>
+                            <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                <!--문의-->
+                                <th:block th:replace="camping/campingQandA :: campingQandAFragment"></th:block>
                             </div>
                         </div>
                     </div>

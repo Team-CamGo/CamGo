@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="campingRsvInfoFragment">
+    
+    <style>
+        .reservation_menu_name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+
+    <table width="100%">
+        <tr class="reservation_menu_name">
+            <td>기본정보</td>
+        </tr>
+        <tr>
+            <td>
+                - 연락처 : 010-1234-1234<br>
+                - 사이트 : https://www.naver.com<br>
+                - 입지 형태 : 산<br>
+                - 예약 형태 : <br>
+                - 지면 방식 : 파쇄식, 데크<br>
+                - 소유 형태 : 사설캠핑장<br>
+                - 주차 형태 : 사이드 옆 주차가능<br>
+            </td>
+        </tr>
+        <tr><td><hr class="division"></td></tr>
+        <tr>
+            <td class="reservation_menu_name">예약정보</td>
+        </tr>
+        <tr>
+            <td>
+                - 최대예약일수 : 6박7일<br>
+                - 입실시간 : 15시 부터<br>
+                - 퇴실시간 : 11시 까지<br>
+                - 성수기 : 9.1~10.16, 8.16~8.31, 7.1~7.15<br>
+                - 준성수기 : 3.25~4.14<br>
+            </td>
+        </tr>
+        <tr><td><hr class="division"></td></tr>
+        <tr>
+            <td class="reservation_menu_name">결제정보</td>
+        </tr>
+        <tr>
+            <td>
+                - 무통장입금<br>
+                    - 은행 : 국민은행<br>
+                    - 예금주 : 김민희<br>
+                    - 계좌번호 : 123456-123-1234<br>
+                - 카드결제<br>
+                - 네이버페이<br>
+            </td>
+        </tr>
+        <tr><td><hr class="division"></td></tr>
+        <tr>
+            <td class="reservation_menu_name">환불정보</td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>기준</th>
+                            <th>8일전~</th>
+                            <th>~5일전</th>
+                            <th>~2일전</th>
+                            <th>~예약일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>환불</td>
+                            <td>100%</td>
+                            <td>80%</td>
+                            <td>40%</td>
+                            <td>0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</html>
