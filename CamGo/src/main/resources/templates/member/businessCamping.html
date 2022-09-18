@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>예약내역조회</title>
+  <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+
+  <style>
+      .container {
+        margin-left:auto; 
+        margin-bottom:auto;
+      }
+
+      .list_text {
+        text-align: center; 
+        margin-top: 3%;
+      }
+
+      .list_area {
+        height:900px;
+        width: 75%;
+        padding-left: 5%;
+      }
+
+      .div_font {
+        font-size: 13px;
+        color: #1c1c1c;
+        line-height: 15px;
+      }
+
+      .member_name {
+        font-size:35px; 
+        color:gray; 
+        font-weight:bold;
+      }
+
+      .member_info {
+        padding:2% 1% 2% 2%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .info_text_area {
+        background-color: lightgray; 
+        height: 200px; 
+        margin: 3% 0 3% 0; 
+        vertical-align: middle;
+      }
+
+      .info_extra_area {
+        display:inline-block;
+        padding-top: 8%;
+        width: 400px;
+      }
+
+      .info_extra td {
+        width: 150px;
+        text-align: center;
+      }
+
+      #info_explain {
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
+        text-align: left;
+      }
+
+      #info_explain th {
+        width: 100%;
+        height:50px;
+        padding: 0 20px 0 40px;
+      }
+      
+      #res {
+        width: 150px;
+        height:50px;
+        text-align: left;
+        padding: 0;
+        border-bottom: 4px solid darkgray;
+      }
+
+      #info_explain td {
+        width: 200px;
+        height: 70px;
+        text-align: center;
+      }
+
+      #info_explain tr:first-child {
+        border-bottom: 1px solid #ffffff;
+      }
+
+      #info_explain tr {
+        border-bottom: 1px solid lightgray;
+      }
+
+      #res_txt {
+        margin-right: 35px;
+      }
+
+      .btn_area {
+       /* display: contents; 
+       margin-right: 55px; */
+        float: right;
+      }
+
+      .btn {
+        border: 1px solid gray;
+        height: 32px;
+        line-height: 15px;
+        margin-right:5px;
+      }
+
+      input[name="ok"] {
+        background-color: cornflowerblue;
+        color: #ffffff;
+      }
+
+      input[name="change"] {
+        background-color: #7fad39;
+        color: #ffffff;
+      }
+      
+      input[name="del"] {
+        background-color: firebrick;
+        color: #ffffff;
+      }
+
+      .date {
+        background-color: #ffffff;
+      }
+
+      .res_area {
+        display: inline-table;
+        margin-right: 55px;
+      }
+
+      #confirm {
+        width: 400px;
+        height: 50px;
+        margin-bottom:10px;
+      }
+
+      #confirm:hover {
+        cursor: pointer;
+        background-color: darkseagreen;
+        border: 1px solid darkseagreen;
+      }
+
+      /* 좌측 회원 메뉴바 */
+      .member_row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -1px;
+      }
+
+      .member_area {
+        flex: 0 0 20%;
+        max-width: 25%;
+      }
+
+      .member_categories {
+        position: relative;
+      }
+
+      .member_categories_all {
+        background: #7fad39;
+        position: relative;
+        padding: 10px 25px 10px 40px;
+        cursor: pointer;
+      }
+
+      .member_categories i {
+        font-size: 16px;
+        color: #ffffff;
+        margin-right: 10px;
+      }
+      .member_bar {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .member_categories > ul {
+        display: block;
+        padding: 10px 10px 10px 40px;
+        border: 0.5px solid lightgray;
+      }
+
+      .member_categories > ul > li {
+        display: block;
+        padding: 5px;
+      }
+
+      .member_categories > ul > li > a {
+        font-size: 16px;
+        color: #1c1c1c;
+        line-height: 39px;
+        display: block;
+      }
+
+      /* 페이징 */
+      .paging {
+        margin-top: 5%;
+      }
+
+      .paging > a {
+        font-size: 15px;
+        color: #1c1c1c;
+        line-height: 15px;
+      }
+      </style>
+<body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+
+   <!-- Hero Section Begin -->
+   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- Hero Section End -->
+   <section class="hero">
+    <div class="container">
+      <!-- <div class="col-lg-9"> -->
+          <div class="info_area">
+              <div class="info_text_area">
+                  <form action="#">
+                      <div class="member_info">
+                        <div>
+                          <span>Mypage</span> <br><br>
+                          
+                          <span class="member_name">사업자명</span> &nbsp;&nbsp;&nbsp;
+                          <a href="#" class="div_font">회원정보 수정</a>
+                          <br>
+                        
+                          <!-- &nbsp;<span class="div_font">등록한 캠핑장 : </span> <span class="div_font">3곳</span> -->
+                        </div>
+                        <div class="info_extra_area">
+                          <table class="info_extra">
+                            <tr>
+                              <td>캠핑장</td>
+                              <td>문의내역</td>
+                              <td>예약내역</td>
+                              <td>리뷰내역</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                  </form>
+              </div>
+          <!-- </div> -->
+
+        <div class="member_row">
+            <div class="member_area">
+                <div class="member_categories">
+                    <div class="member_categories_all">
+                        <i class="member_bar"></i>
+                        <span></span>
+                    </div>
+                    <ul>
+                        <li><a href="#">캠핑지 관리</a></li>
+                        <li><a href="#">리뷰 관리</a></li>
+                        <li><a href="#">문의글 관리</a></li>
+                        <li><a href="#">예약 관리</a></li>
+                        <li><a href="#">전산요청 관리</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="list_area">
+              <div class="list_text">
+                <form id="listinfo_form">
+                <table id="info_explain">
+                  <tr>
+                    <th colspan="7">
+                      <span id="res_txt">캠핑지 관리</span>
+                        <div class="btn_area">
+                          <input type="button" class="btn" name="ok" value="등록">
+                          <input type="button" class="btn" name="change" value="수정">
+                          <input type="button" class="btn" name="del" value="삭제">
+                         <!-- <input type="button" class="btn" value="전체시기"> -->
+      
+                          <!-- <input type="date" class="btn date" value="">&nbsp;-&nbsp;
+                          <input type="date" class="btn date" value=""> -->
+                          <!-- <input type="button" class="btn lookup" value="조회"> -->
+                        </div>
+                    </th>
+                  </tr>
+                  <!-- <tr>
+                    <td id="res" colspan="7">
+                      <div>
+                        <div class="res_area">결제대기&nbsp;&nbsp;0</div>
+                        <div class="res_area">결제완료&nbsp;&nbsp;1</div>
+                        <div class="res_area">배송중&nbsp;&nbsp;1</div>
+                        <div class="res_area">배송완료&nbsp;&nbsp;1</div>
+                        <div class="res_area">결제취소&nbsp;&nbsp;0</div>
+                        <div class="res_area">환불완료&nbsp;&nbsp;1</div>
+                      </div>
+                    </td>
+                  </tr> -->
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>번호</td>
+                    <td>캠핑장<br>썸네일</td>
+                    <td>캠핑장명</td>
+                    <td>등록일</td>
+                    <td>삭제일</td>
+                    <td>옵션</td>
+                    <td>상태</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>1</td>
+                    <td><img src='img/product/details/product-details-1.jpg'></td>
+                    <td>당근캠핑장</td>
+                    <td>2022-03-27</td>
+                    <td></td>
+                    <td>
+                      <select>
+                        <option value="0">옵션추가</option>
+                        <option value="1" selected>바베큐세트</option>
+                        <option value="2">둘이서세트</option>
+                        <option value="3">나홀로세트</option>
+                        <option value="4">럭셔리세트</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select>
+                        <option value="1" selected>운영중</option>
+                        <option value="2">등록중</option>
+                        <option value="3">폐업</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>2</td>
+                    <td><img src='img/product/details/product-details-2.jpg'></td>
+                    <td>오이캠핑장</td>
+                    <td>2022-04-27</td>
+                    <td></td>
+                    <td>
+                      <select>
+                        <option value="0">옵션추가</option>
+                        <option value="1">바베큐세트</option>
+                        <option value="2" selected>둘이서세트</option>
+                        <option value="3">나홀로세트</option>
+                        <option value="4">럭셔리세트</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select>
+                        <option value="1" selected>운영중</option>
+                        <option value="2">등록중</option>
+                        <option value="3">폐업</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>3</td>
+                    <td><img src='img/product/details/product-details-3.jpg'></td>
+                    <td>양파캠핑장</td>
+                    <td>2022-05-27</td>
+                    <td></td>
+                    <td>
+                      <select>
+                        <option value="0">옵션추가</option>
+                        <option value="1">바베큐세트</option>
+                        <option value="2">둘이서세트</option>
+                        <option value="3" selected>나홀로세트</option>
+                        <option value="4">럭셔리세트</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select>
+                        <option value="1" selected>운영중</option>
+                        <option value="2">등록중</option>
+                        <option value="3">폐업</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" value=""></td>
+                    <td>4</td>
+                    <td><img src='img/product/details/product-details-5.jpg'></td>
+                    <td>상추캠핑장</td>
+                    <td></td>
+                    <td>2022-06-27</td>
+                    <td>
+                      <select>
+                        <option value="0">옵션추가</option>
+                        <option value="1">바베큐세트</option>
+                        <option value="2">둘이서세트</option>
+                        <option value="3" selected>나홀로세트</option>
+                        <option value="4">럭셔리세트</option>
+                      </select>
+                    </td>
+                    <td style="color:crimson;">
+                      <select>
+                        <option value="1">운영중</option>
+                        <option value="2">등록중</option>
+                        <option value="3" selected>폐업</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="paging">
+                  <<&nbsp;&nbsp;<a href="#">1</a>&nbsp;&nbsp;<a href="#">2</a>&nbsp;&nbsp;<a href="#">3</a>&nbsp;&nbsp;>>
+                </div>
+
+              </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+
+      </div>
+  </section>   
+  <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+              
+
+</body>
+</html>

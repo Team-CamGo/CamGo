@@ -102,4 +102,20 @@ public class memberController {
   public String inquiry() {
     return "/member/inquiry";
   }
+
+  /*
+   * 사업자 회원 - 캠핑지 관리
+   */
+  @RequestMapping("/bCamping")
+  public String bCamping() {
+    return "/member/businessCamping";
+  }
+
+  /*
+   * 사업자 회원 - 예약 관리
+   */
+  @RequestMapping("/bReservation")
+  public String bReservation() {
+    return "/member/businessReservation";
+  }
 }
