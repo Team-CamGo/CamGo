@@ -2,9 +2,9 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="UTF-8">
-    <title>리뷰</title>
-    <th:block th:replace="fragments/head :: headFragment"></th:block>
+  <meta charset="UTF-8">
+  <title>리뷰</title>
+  <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
 <style>
@@ -185,6 +185,11 @@ line-height: 15px;
 .container-review {
     padding: 0 0 0 50px;
 }
+
+.sub_title {
+    font-size:15px;
+    font-weight:bold;
+}
 </style>
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
@@ -233,19 +238,31 @@ line-height: 15px;
                     </div>
                     <div class="hero_list non_border">
                         <div class="viewExp non_border">
-                            <div class="sub_title">캠핑장</div><input type="text" placeholder="캠핑장명을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
-                            <div class="sub_title">제목</div><input type="text" placeholder="제목을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
-                            <div class="sub_title">내용입력</div><textarea rows="10" cols="80" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"></textarea><br>
-                            <div class="sub_title">첨부파일</div><input type="file" style="margin: 10px 0 10px 0;">
+                            <div class="sub_title">캠핑장</div><div>캠핑장명<div><br>
+                            <div class="sub_title">제목</div><div>제목</div><br>
+                            <div class="sub_title">내용입력</div><div>캠핑장이 너무 깔끔하고 새로 지어서 그런지 굉장히 깔끔했습니다.<br>사장님도 친절하시고 추가 요구사항도 잘 들어주셔서 편하게 잘 놀다 갑니다. <br> 다음에 또 올게요!</div><br>
                         </div>
                         <hr style="border:0; height:2px;background: #959595;"/>
                         <div class="bottombox">
-                            <input type="submit" value="등록" class="btn-black">
-                            <input type="submit" value="수정" class="btn-black">
-                            <input type="submit" value="삭제" class="btn-black">
-                            <input type="submit" value="목록" class="btn-black">
+                        
                         </div>
                     </div>    
+                </div>
+                <div class="viewExp non_border">
+                    <table style="width:100%">
+                        <tr>
+                            <td align="left" class="md-td">2022-04-07&emsp;캠핑장명 : </td>
+                            <td align="left">푹쉬다 가셔서 다행입니다. 다음에 오실 때도 좋은 추억 만들다 가셨음 좋겠네요 ^^ </td>
+                            <td align="right">&nbsp;<input type="button" value="삭제"></td>
+                        </tr>
+                        <tr style="height:10px;"></tr>
+                        <tr>
+                            <td colspan="3"><textarea placeholder="댓글 내용을 입력해주세요" rows="2" cols="100"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><input type="button" value="댓글 작성"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="list_area">

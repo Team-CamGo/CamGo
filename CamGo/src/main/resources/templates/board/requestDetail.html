@@ -2,9 +2,9 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-    <meta charset="UTF-8">
-    <title>리뷰</title>
-    <th:block th:replace="fragments/head :: headFragment"></th:block>
+<meta charset="UTF-8">
+<title>전산요청게시판</title>
+<th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
 <style>
@@ -185,6 +185,16 @@ line-height: 15px;
 .container-review {
     padding: 0 0 0 50px;
 }
+
+.md-td {
+    width: 170px;
+}
+
+.bottombox {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    margin: 15px 0 0 0;
+}
 </style>
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
@@ -228,15 +238,38 @@ line-height: 15px;
             <div class="container-review">
                 <div class="hero__text">
                     <div class="breadCrumb-wrapper sub">
-                        <span class="main_title" style="font-size:17px;">리뷰</span>
+                        <span class="main_title" style="font-size:17px;">전산요청게시판</span>
                         <hr style="border:0; height:2px;background: #959595;"/>
                     </div>
                     <div class="hero_list non_border">
                         <div class="viewExp non_border">
-                            <div class="sub_title">캠핑장</div><input type="text" placeholder="캠핑장명을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
-                            <div class="sub_title">제목</div><input type="text" placeholder="제목을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
+                            <div class="sub_title">제목</div><input type="text" placeholder="제목입니다" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
                             <div class="sub_title">내용입력</div><textarea rows="10" cols="80" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"></textarea><br>
                             <div class="sub_title">첨부파일</div><input type="file" style="margin: 10px 0 10px 0;">
+                        </div>
+                        <hr style="border:0; height:2px;background: #959595;"/>
+                        <div class="viewExp non_border">
+                            <div class="sub_title"><b>댓글&nbsp;(3)</b></div>
+                            <table style="width:100%">
+                                <tr>
+                                    <td align="left" class="md-td">2022-04-07&emsp;회원명 : </td>
+                                    <td align="left">문의내용입니다.</td>
+                                    <td align="right"><input type="button" value="수정">&nbsp;<input type="button" value="삭제"></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="md-td">2022-04-07&emsp;회원명 : </td>
+                                    <td align="left">문의내용입니다.</td>
+                                    <td align="right"><input type="button" value="수정">&nbsp;<input type="button" value="삭제"></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" class="md-td">2022-04-07&emsp;회원명 : </td>
+                                    <td align="left">문의내용입니다.</td>
+                                    <td align="right"><input type="button" value="수정">&nbsp;<input type="button" value="삭제"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><textarea placeholder="댓글 내용을 입력해주세요" rows="2" cols="80"></textarea></td>
+                                </tr>
+                            </table>
                         </div>
                         <hr style="border:0; height:2px;background: #959595;"/>
                         <div class="bottombox">

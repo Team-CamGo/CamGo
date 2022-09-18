@@ -16,7 +16,7 @@ public class adminController {
 
     /*
         사업자회원관리리스트 페이지
-     */
+    */
     @RequestMapping("/adminInfo")
     public String adminInfo() {
     return "/admin/adminInfo";
@@ -24,7 +24,7 @@ public class adminController {
 
     /*
         캠핑지 관리리스트 페이지
-     */
+    */
     @RequestMapping("/campingCare")
     public String campingCare() {
     return "/admin/campingCare.html";
@@ -32,7 +32,7 @@ public class adminController {
 
     /*
         캠핑지 옵션관리리스트 페이지
-     */
+    */
     @RequestMapping("/campingOption")
     public String campingOption() {
     return "/admin/campingOption.html";

@@ -38,4 +38,36 @@ public class boardController {
   public String answer() {
     return "/board/answer";
   }
+
+  /**
+   * 리뷰 리스트
+   */
+  @RequestMapping("/reviewList")
+  public String reviewList() {
+    return "/board/reviewList";
+  }
+
+  /**
+   * 리뷰 리스트
+   */
+  @RequestMapping("/reviewDetail")
+  public String reviewDetail() {
+    return "/board/reviewDetail";
+  }
+
+    /**
+   * 전산요청 리스트 페이지
+   */
+  @RequestMapping("/requestList")
+  public String requestList() {
+    return "/board/request";
+  }
+
+  /**
+   * 전산요청 리스트 페이지
+   */
+  @RequestMapping("/request")
+  public String request() {
+    return "/board/requestDetail";
+  }
 }
