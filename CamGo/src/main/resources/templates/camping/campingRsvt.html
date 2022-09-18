@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Camgo | Reservation</title>
+    <th:block th:replace="fragments/head :: headFragment"></th:block>
+
+    <style>
+        
+        .rsvtMain {
+            width:100%;
+            padding-right:15px;
+            padding-left:15px;
+            margin-right:auto;
+            margin-left:auto;
+        }
+
+        @media (min-width:576px) {
+            .rsvtMain {
+                max-width:540px
+            }
+        }
+
+        @media (min-width:768px) {
+            .rsvtMain {
+                max-width:720px
+            }
+        }
+
+        @media (min-width:992px) {
+            .rsvtMain {
+                max-width:960px
+            }
+        }
+
+        @media (min-width:1200px) {
+            .rsvtMain {
+                max-width:1140px
+            }
+        }
+
+        .rsvtTitle {
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        .rsvtCtMain {
+            width:100%;
+            margin-bottom: 10px;
+        }
+
+        .rsvtCtMain .rsvtCt {
+            width:100%;
+            margin-bottom: 10px;
+        }
+
+        .rsvtCtMain .rsvtCt .ctPart {
+            width: 95%;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            border-right: 1px solid gray;
+            border-left: 1px solid gray;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .rsvtCtMain .title {
+            text-align:center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .rsvtCtTitle {
+            padding-left:5px;
+            font-weight: bold;
+            font-size: 17px;
+            background-color: #e5f0db;
+        }
+
+        .rsvtCtValue {
+            padding-left:10px;
+            font-size: 16px;
+            height:43px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+
+    <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+
+    <table class="rsvtMain"><tr><td>
+
+    <table class="rsvtTitle" style="font-size:25px">
+        <tr>
+            <td>
+                캠핑장 이름
+            </td>
+        </tr>
+    </table>
+
+    <table class="rsvtTitle" style="font-size:18px;margin-bottom:20px;">
+        <tr>
+            <td>
+                예약 / 결제하기
+            </td>
+        </tr>
+    </table>
+
+    <table class="rsvtCtMain">
+        <tr class="rsvtCtMain title">
+            <td>
+                예약정보
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="rsvtCtMain rsvtCt">
+                    <tr>
+                        <td>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        캠핑장이름
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <div style="float:left;">
+                                            <select name="camp_name" value="1" disabled><option value="1">캠핑지이름</option></select>
+                                        </div>
+                                        <div style="float:right;font-size:11px;margin-top:10px;margin-right:20px;cursor:pointer" onclick="">변경</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        예약날짜
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue" style="font-size:18px;">
+                                        <div style="float:left;">
+                                            <input type="date" name="s_date" value="" readonly> ~ 
+                                            <input type="date" name="s_date" value="" readonly> [1박]
+                                        </div>
+                                        <div style="float:right;font-size:11px;margin-top:7px;margin-right:20px;cursor:pointer" onclick="">변경</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        예약인원
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue" style="display:flex;align-items:center;">
+                                        <i class="fa fa-minus-square" style="cursor:pinter;"></i>
+                                        <span style="font-size:25px;color:orange;font-weight:bold;margin-left:20px;margin-right:20px">2인</span>
+                                        <i class="fa fa-plus-square" style="cursor:pinter"></i>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        추가옵션
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <input type="checkbox" name="camp_opt" value="camp_opt1"> 옵션 1<br>
+                                        <input type="checkbox" name="camp_opt" value="camp_opt2"> 옵션 2
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <table>
+
+    <table class="rsvtCtMain">
+        <tr class="rsvtCtMain title">
+            <td>
+                결제
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" class="rsvtCtMain rsvtCt">
+                    <tr>
+                        <td>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        결제정보
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        캠핑지 이름 : 79,000원<br>
+                                        예약인원 : 2인<br>
+                                        기간 : 1박<br>
+                                        인원 추가요금 : 0원<br>
+                                        옵션 추가요금 : 0원<br>
+                                        총 상품금액 : 79,000원 (VAT 포함)
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        결제수단
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <select name="pay_option" value="1">
+                                            <option value="0">결제방법 선택</option>
+                                            <option value="1">신용/체크카드 결제</option>
+                                            <option value="2">연동결제</option>
+                                            <option value="3">계좌이체/무통장입금</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        쿠폰/적립금 사용
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <div style="margin-top:5px;">총 상품 금액&nbsp;&nbsp;&nbsp;&nbsp;79,000 원</div>
+                                        <div style="margin-top:10px;">
+                                            적립금&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            - <input type="text" size="5" name="point"> 원 <span style="font-size:10px;color:gray">잔여 : 0원</span>
+                                        </div>
+                                        <div style="margin-top:10px;">
+                                            <select name="coupone" value="1">
+                                                <option value="0">쿠폰선택</option>
+                                                <option value="1">내가가진 사용가능한 쿠폰 1</option>
+                                                <option value="2">내가가진 사용가능한 쿠폰 2</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        신용/체크카드 결제
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <select name="card_option" value="0">
+                                            <option value="0">카드사 선택</option>
+                                            <option value="1">국민은행</option>
+                                            <option value="2">우리은행</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        연동결제
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        <input type="radio" name="api_pay_1" value="1"> 네이버 페이 <br>
+                                        <input type="radio" name="api_pay_2" value="2"> 카카오 페이
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="rsvtCtMain rsvtCt ctPart">
+                                <tr>
+                                    <td class="rsvtCtTitle">
+                                        계좌이체/무통장입금
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="rsvtCtValue">
+                                        은행 : 국민은행<br>
+                                        예금주 : 김민희<br>
+                                        계좌번호 : 123456-78-9101112
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table class="rsvtTitle" style="margin-top:10px;">
+        <tr>
+            <td style="font-weight:bold;font-size:16px">
+                총 결제금액 <span style="font-size:18px;color:orange">79,000</span> 원
+            </td>
+        </tr>
+    </table>
+
+    <table class="rsvtTitle" style="margin-top:10px;">
+        <tr>
+            <td>
+               <input type="button" class="primary-btn" value="예약신청하기">
+            </td>
+        </tr>
+    </table>
+
+    </td></tr></table>
+
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+
+</body>
+
+</html>

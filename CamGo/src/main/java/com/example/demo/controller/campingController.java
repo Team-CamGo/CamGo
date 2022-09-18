@@ -23,4 +23,12 @@ public class campingController {
         return "/camping/campingDetail.html";
     }
 
+    /*
+     * 캠핑지 예약페이지
+     */
+    @RequestMapping("/campingrsvt")
+    public String campingRsvt() {
+        return "/camping/campingRsvt.html";
+    }
+
 }
