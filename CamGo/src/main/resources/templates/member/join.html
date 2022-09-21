@@ -154,6 +154,11 @@
     
     location.href = '/joininfo?option='+option;
   }
+  
+  function cancleBtn()
+  {
+    location.href = '/';
+  }
 
 </script>
 
@@ -213,7 +218,7 @@
             </table>
 
             <div id="button_area">
-              <input type="button" id="cancle" class="btn" value="취소">
+              <input type="button" id="cancle" class="btn" value="취소" onclick="cancleBtn();">
               <input type="button" id="confirm" class="btn" value="확인" onclick="confirmBtn();">
             </div>
 
