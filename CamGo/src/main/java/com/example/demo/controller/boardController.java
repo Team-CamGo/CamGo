@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import org.springframework.context.annotation.Conditional;
+// import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -48,7 +48,7 @@ public class boardController {
   }
 
   /**
-   * 리뷰 리스트
+   * 리뷰 상세
    */
   @RequestMapping("/reviewDetail")
   public String reviewDetail() {

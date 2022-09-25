@@ -233,17 +233,17 @@ line-height: 15px;
                     </div>
                     <div class="hero_list non_border">
                         <div class="viewExp non_border">
-                            <div class="sub_title">캠핑장</div><input type="text" placeholder="캠핑장명을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
-                            <div class="sub_title">제목</div><input type="text" placeholder="제목을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
-                            <div class="sub_title">내용입력</div><textarea rows="10" cols="80" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"></textarea><br>
+                            <div class="sub_title">캠핑장</div><input id="camp_name" type="text" placeholder="캠핑장명을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
+                            <div class="sub_title">제목</div><input id="review_title" type="text" placeholder="제목을 입력하세요" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"><br>
+                            <div class="sub_title">내용입력</div><textarea id="review_content" rows="10" cols="80" style="margin: 10px 0 10px 0; border:#a5a5a5 1px solid;"></textarea><br>
                             <div class="sub_title">첨부파일</div><input type="file" style="margin: 10px 0 10px 0;">
                         </div>
                         <hr style="border:0; height:2px;background: #959595;"/>
                         <div class="bottombox">
-                            <input type="submit" value="등록" class="btn-black">
-                            <input type="submit" value="수정" class="btn-black">
-                            <input type="submit" value="삭제" class="btn-black">
-                            <input type="submit" value="목록" class="btn-black">
+                            <input type="submit" value="등록" class="btn-black" onclick="submit('INSERT')">
+                            <input type="submit" value="수정" class="btn-black" onclick="submit('UPDATE')">
+                            <input type="submit" value="삭제" class="btn-black" onclick="submit('DELETE')">
+                            <input type="submit" value="목록" class="btn-black" onclick="">
                         </div>
                     </div>    
                 </div>
@@ -255,7 +255,48 @@ line-height: 15px;
 </div>
 </section>   
 <th:block th:replace="fragments/footer :: footerFragment"></th:block>
-
-
 </body>
+<script>
+    function submit(mode)
+    {
+        if(mode != 'DELETE')
+        {
+            const camp_name = document.getElementById('camp_name');
+            const review_title = document.getElementById('review_title');
+            const content = document.getElementById('review_content');
+            if(!camp_name.value)
+            {
+                alert('캠핑장명을 입력하세요.');
+                camp_name.focus();
+            }
+            else if(!review_title.value)
+            {
+                alert('제목을 입력하세요.');
+                review_title.focus();
+            }else if(!content.value)
+            {
+                alert('내용을 입력하세요.');
+                content.focus();
+            }
+        }
+
+        // 등록
+        if(mode === 'INSERT')
+        {
+
+        }else if(mode === 'UPDATE')
+        {
+
+        }else if(mode === 'DELETE')
+        {
+            if(confirm('정말 삭제하시겠습니까?') === false)
+            {
+                return false;
+            }
+        }else
+        {
+
+        }
+    }
+</script>
 </html>
