@@ -2,27 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <th:block th:fragment="heroFragment">
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+    <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>CAMGO | LIST</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="campinglist">캠핑</a></li>
+                            <li><a href="campinglist">오토캠핑</a></li>
+                            <li><a href="campinglist">카라반</a></li>
+                            <li><a href="campinglist">글램핑</a></li>
+                            <li><a href="campinglist">펜션</a></li>
+                            <li><a href="campinglist">게스트하우스</a></li>
+                            <li><a href="campinglist">당일피크닉</a></li>
+                            <li><a href="campinglist">차박</a></li>
+                            <li><a href="campinglist">반려동물</a></li>
+                            <li><a href="campinglist">키즈</a></li>
+                            <li><a href="campinglist">수영장</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,11 +31,14 @@
                         <div class="hero__search__form">
                             <form action="#">
                                 <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    캠핑장 검색
+                                    <!-- <span class="arrow_carrot-down"></span> -->
+                                </div>
+                                <div class="hero__search__categories">
+                                    <ul></ul>
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <button type="submit" class="site-btn">검색</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -43,9 +46,17 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>+82 10-1234-1234</h5>
                                 <span>support 24/7 time</span>
                             </div>
+                        </div>
+                    </div>
+                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                        <div class="hero__text">
+                            <span>CampingList</span>
+                            <h2>Camping <br /></h2>
+                            <p>Free Pickup and Delivery Available</p>
+                            <a href="campinglist" class="primary-btn">SHOW NOW</a>
                         </div>
                     </div>
                 </div>

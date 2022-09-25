@@ -88,7 +88,7 @@ public class memberController {
   }
 
   /*
-   * 리뷰  작성 페이지
+   * 리뷰 작성 페이지
    */
   @RequestMapping("/review")
   public String review() {
