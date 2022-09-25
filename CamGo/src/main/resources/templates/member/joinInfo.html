@@ -7,313 +7,507 @@
   <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
-  <style>
-      .container {
-        margin-left:auto; 
-        margin-bottom:auto;
-      }
+<style>
+  .container {
+    margin-left:auto; 
+    margin-bottom:auto;
+  }
 
-      .join_info set-bg {
-        height:10%;
-      }
+  .join_info set-bg {
+    height:10%;
+  }
 
-      .join_text {
-        text-align: center; margin-top: 5%;
-      }
+  .join_text {
+    text-align: center; margin-top: 5%;
+  }
 
-      .join_info set-bg {
-        height:90%;
-      }
+  .join_info set-bg {
+    height:90%;
+  }
 
-      #guide {
-        text-align: right;
-        font-size: 11px;
-      }
+  #guide {
+    text-align: right;
+    font-size: 11px;
+  }
 
-      #info_explain {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
-      }
+  #info_explain {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
 
-      #info_explain td:first-child {
-        width: 150px;
-        height:70px;
-        /* padding-bottom: 30px; */
-      }
+  #info_explain td:first-child {
+    width: 150px;
+    height:70px;
+    /* padding-bottom: 30px; */
+  }
 
-      #info_explain td:last-child {
-        width: 350px;
-        height:70px;
-        /* padding-bottom: 30px; */
-      }
+  #info_explain td:last-child {
+    width: 530px;
+    height:70px;
+    /* padding-bottom: 30px; */
+  }
 
-      #email_first {
-        width: 190px;
-        height: 30px;
-      }
+  #email_first {
+    width: 140px;
+    height: 30px;
+  }
+  
+  .email_area {
+    display: inline-flex;
+  }
 
-      .email_area {
-        display:inline-flex;
-      }
+  .nice-select {
+    margin-top: -5px;
+    margin-left: -10px;
+  }
+  
+  #email_text {
+    display: none;
+    width: 165px;
+    height: 30px;
+  }
+  
+  #reset {
+    display: none;
+  }
+
+  #chk_text {
+    color: red;
+  }
+
+  #phone {
+    /* margin-right: 5px; */
+    margin-bottom: 5px;
+  }
+
+  .phone_box {
+    width:320px;
+    height:30px;
+  }
+
+  .input_box {
+    width: 315px;
+    height: 30px;
+  }
+  
+  .birth {
+    display: inline-flex;
+    margin-right: 10px;
+  }
+  
+  .birth sel {
+    width: 180px;
+    height: 40px;
+  }
+
+  #year_area, #sex_area
+  {
+    margin-left: 10px;
+  }
+
+  .phone_confirm, #reset :hover {
+    cursor: pointer;
+  }
+
+  #phone_num {
+    width: 75px;
+  }
+
+  #chk_num {
+    color: red;
+  }
+
+  #button_area {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  #bottom_hr {
+    margin-top: 30px; 
+    margin-bottom: 30px;
+  }
+
+  #chk_send { 
+    font-weight: bold; 
+  }
+
+  #chk_option { 
+    font-weight: bold; 
+  }
+
+  #confirm {
+    width: 400px;
+    height: 50px;
+    margin-bottom:10px;
+  }
+
+  #confirm:hover {
+    cursor: pointer;
+    background-color: darkseagreen;
+    border: 1px solid darkseagreen;
+  }
+
+  #chk_area {
+    margin-left: auto;
+    margin-right: auto;
+    width: 410px;
+    height: 150px;
+    text-align: left;
+  }
+
+  /* 생년월일 세로 스크롤 왜 안먹지? */
+  #year {
+    overflow-y: scroll;
+  }
+</style>
+
+<script th:inline="javascript">
+
+  // 아이디 정규식 : 영어, 숫자만 가능
+  function chk_id(id)
+  {
+    const regex = /^[a-z|A-Z|0-9]+$/;
+
+    if(!regex.test(id.value))
+    {
+      id.value = "";
+    }
+  }
+  
+  // 이메일 select
+  function email_select(email)
+  {
+    const selectDiv = document.getElementsByClassName('nice-select');
+    const email_text = document.getElementById('email_text');
+    const reset = document.getElementById('reset');
+    const idx = email.selectedIndex;
+    
+    if(email.options[idx].value == "4")
+    {
+      selectDiv[0].style.display = "none";
+      email_text.style.display = "inline";
+      reset.style.display = "inline";
+    }
+    else
+    {
+      selectDiv[0].style.display = "";
+      email_text.style.display = "none";
+      reset.style.display = "none";
+    }
+  }
+  
+  // 아이디 재작성 버튼
+  function reset_text()
+  {
+    const email_first = document.getElementById('email_first');
+    const email_text = document.getElementById('email_text');
+    const reset = document.getElementById('reset');
+
+    email_first.innerHTML = "";
+    email_text.innerHTML = "";
+    selectDiv[0].style.display = "";
+    email_text.style.display = "none";
+    reset.style.display = "none";
+  }
+
+  // 비밀번호 정규식 : 특수문자(!@#$?), 영어, 숫자만 가능
+  function chk_reg(reg)
+  {
+    const regex = /^[!@#$?|a-z|A-Z|0-9]+$/;
+
+    if(!regex.test(reg.value))
+    {
+      reg.value = "";
+    }
+  }
+
+  // 비밀번호 확인
+  function chk_pwd()
+  {
+    const pwd = document.getElementById('pwd');
+    const pwd_chk = document.getElementById('pwd_chk');
+    const chk_text = document.getElementById('chk_text');
+
+    if(pwd.value != pwd_chk.value)
+    {
+      chk_text.innerHTML = '비밀번호가 일치하지 않습니다';
+      chk_text.style.color = 'red';
+    }
+    else
+    {
+      chk_text.innerHTML = '';
+    }
+  }
+
+  // 이름 정규식 : 한글만 가능 
+  function chk_kor(kor)
+  {
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/;
+
+    if(!regex.test(kor.value))
+    {
+      kor.value = "";
+    }
+  }
+
+  // 휴대전화, 인증번호 정규식 : 숫자만 가능 
+  function chk_phone(phone)
+  {
+    const regex = /^[0-9]+$/;
+
+    if(!regex.test(phone.value))
+    {
+      phone.value = "";
+    }
+  }
+  
+  
+  // 휴대전화 인증버튼 : 5분 안에 인증하도록 time limit -> 시간 초과 시 return false
+  function phone_number_chk()
+  {
+    let time = 300;
+    let min = "";
+    let sec = "";
+  
+    let x = setInterval(function() {
+      min = parseInt(time/60);
+      sec = time%60;
+  
+      document.getElementById('chk_num').innerHTML = min + '분' + sec + '초';
+      time--;
       
-      #phone {
-        /* margin-right: 5px; */
-        margin-bottom: 5px;
+      // 타임아웃 시
+      if(time < 0)
+      {
+        clearInterval(x); // setInterval() 실행 종료
+        document.getElementById('chk_num').innerHTML = '';
+        alert('인증시간을 초과하였습니다.\n다시 시도해주시기 바랍니다.')
       }
+    }, 1000);   // 1000 안 넣어주면 밀리세컨즈 단위로 시간 줄어듦
+  }
 
-      .phone box {
-        width:330px;
-        height:30px;
-      }
+  // 인증번호 확인 버튼
+  // 인증버튼 누르면 숨겨진 input 태그에 인증번호 넣어서 인증번호 입력칸 onkeyup 하면 맞는지 확인 -> 붙여넣기도 적용되는지 체크 필요
+  function phone_num_chk()
+  {
+    const number = document.getElementById('number_chk'); // 인증번호 버튼 누르면 컨트롤러를 통해 전달받은 값 숨겨놓기
+    const phone_chk = document.getElementById('phone_chk');
 
-      .input_box {
-        width: 320px;
-        height: 30px;
-      }
-      
-      .birth {
-        display: inline-flex;
-        margin-right: 10px;
-      }
-      
-      .birth sel {
-        width: 180px;
-        height: 40px;
-      }
+    if(number != phone_chk)
+    {
+      alert('인증번호가 일치하지 않습니다.\n다시 인증해주시기 바랍니다.');
+      return false;
+    }
+  }
 
-      #phone_confirm:hover {
-        cursor: pointer;
-      }
+  // 가입하기 버튼 : 아이디, 비밀번호, 비밀번호 확인, 이름, 생년월일, 휴대전화, 수신 체크 중 하나라도 비면 return false
+  function sendit()
+  {
+    const email_first = document.getElementById('email_first');
+    const pwd = document.getElementById('pwd');
+    const pwd_chk = document.getElementById('pwd_chk');
+    const name = document.getElementById('name');
+    const email_idx = document.getElementById('email_last').selectedIndex;
+    const year_idx = document.getElementById('year').selectedIndex;
+    const month_idx = document.getElementById('month').selectedIndex;
+    const day_idx = document.getElementById('day').selectedIndex;
+    const sex_idx = document.getElementById('sex').selectedIndex;
+    const phone_chk = document.getElementById('phone_chk');
+    const msg_send = document.getElementById('msg_send');
+    const email_send = document.getElementById('email_send');
 
-      #button_area {
-        text-align: center;
-        padding-top: 50px;
-      }
+    if(!email_first.value || email_idx == "0") 
+    { 
+      alert('아이디를 확인해주세요'); 
+      return false; 
+    }
+    if(!pwd.value || !pwd_chk.value) 
+    {
+      alert('비밀번호를 확인해주세요'); 
+      return false;
+    }
+    if(!name.value) 
+    {
+      alert('이름을 확인해주세요'); 
+      return false;
+    }
+    if(year_idx == "0" || month_idx == "0" || day_idx == "0") 
+    {
+      alert('생년월일을 선택해주세요'); 
+      return false;
+    }
+    if(sex_idx == "0") 
+    {
+      alert('성별을 선택해주세요'); 
+      return false;
+    }
+    if(!phone_chk.value) 
+    {
+      alert('휴대전화 인증을 진행해주세요'); 
+      return false;
+    }
+   if(!msg_send.checked && !email_send.checked) 
+    {
+      alert('수신 안내 여부는 하나 이상 선택해주세요'); 
+      return false;
+    }
 
-      #bottom_hr {
-        margin-top: 30px; 
-        margin-bottom: 30px;
-      }
+    // 컨트롤러로 이동
+    alert('끝');
+  }
 
-      #chk_send { 
-        font-weight: bold; 
-      }
 
-      #chk_option { 
-        font-weight: bold; 
-      }
 
-      #confirm {
-        width: 400px;
-        height: 50px;
-        margin-bottom:10px;
-      }
+</script>
 
-      #confirm:hover {
-        cursor: pointer;
-        background-color: darkseagreen;
-        border: 1px solid darkseagreen;
-      }
-
-      #chk_area {
-        margin-left: auto;
-        margin-right: auto;
-        width: 410px;
-        height: 150px;
-        text-align: left;
-      }
-
-      </style>
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
-   <!-- Hero Section Begin -->
    <section class="hero">
     <div class="container">
-        <!-- <div class="row"> -->
-            <!-- <div class="col-lg-3">
-                <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>All departments</span>
-                    </div>
-                    <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
-                    </ul>
+      <div class="join_info set-bg">
+        <div class="join_text">
+          <h3><b>회원가입</b></h3>
+          <hr>
+            <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
+        </div>
+      </div>                  
+      <div class="join_info set-bg">
+        <div class="join_text">
+          <form id="join_info_form">
+          <table id="info_explain">
+            <tr>
+              <td>아이디 *</td>
+              <td>
+                <div class="email_area">
+                <input id="email_first" value="" onkeyup="chk_id(this);">&nbsp;@&nbsp;
+                  <input type="text" id="email_text" value="" placeholder="abc.co.kr"> &nbsp;&nbsp;
+                  <input type="button" id="reset" value="재입력" onclick="reset_text();">
+
+                  <select id="email_last" onchange="email_select(this);">
+                    <option value="">이메일</option>
+                    <option value="1">gmail.com</option>
+                    <option value="2">naver.com</option>
+                    <option value="3">daum.net</option>
+                    <option value="4">직접입력</option>
+                  </select>
                 </div>
-            </div> -->
-
-            <!-- <div class="col-lg-9"> -->
-                <!-- <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="join_info set-bg">
-                  <div class="join_text">
-                    <h3><b>회원가입</b></h3>
-                    <hr>
-                      <p id="guide">* 가 붙은 항목은 모두 입력해주시기 바랍니다.</p>
-                  </div>
-                </div>                  
-                <div class="join_info set-bg">
-                  <div class="join_text">
-                    <form id="join_info_form">
-                    <table id="info_explain">
-                      <tr>
-                        <td>아이디 *</td>
-                        <td>
-                          <input id="email_first" value=""> @
-                          <div class="email_area">
-                            <select id="email_last">
-                              <option value="">이메일</option>
-                              <option value="1">gmail.com</option>
-                              <option value="2">naver.com</option>
-                              <option value="3">daum.net</option>
-                              <option value="4">직접입력</option>
-                            </select>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>비밀번호 *</td>
-                        <td>
-                          <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>비밀번호 확인 *</td>
-                        <td>
-                          <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>이름 *</td>
-                        <td>
-                          <input id="name" class="input_box" value="" placeholder="김네모">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>생년월일 *</td>
-                        <td>
-                          <div class="birth">
-                           <select id="year" class="birth sel">
-                              <option value="">년</option>
-                              <option value="1999">1999</option>
-                            </select>  
-                        </div>
-                        <div class="birth">
-                          <select id="month" class="birth sel">
-                            <option value="">월</option>
-                            <option value="1">1</option>
-                          </select>  
-                        </div>
-                        <div class="birth">
-                          <select id="day" class="birth sel">
-                            <option value="">일</option>
-                            <option value="1">1</option>
-                          </select>
-                        </div>
-                      </tr>
-                      <tr>
-                        <td>성별 *</td>
-                        <td>
-                          <select id="sex">
-                            <option value="">성별</option>
-                            <option value="1">여자</option>
-                            <option value="2">남자</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>휴대전화 *</td>
-                        <td>
-                          <input id="phone" class="phone box" value="" placeholder="전화번호를 입력하세요">  
-                          <input type="button" id="phone_confirm" value="인증번호"> 
-                          <input id="phone_chk" class="phone box" value="" placeholder="인증번호를 입력하세요">
-                        </td>
-                      </tr>
-                      <!-- <tr>
-                        <td></td>
-                        <td>
-                        </td>
-                      </tr> -->
-                    </table>
-
-                    <hr id="bottom_hr">
-                    
-                    <div id="chk_area">
-                      <table id="chk tbl">
-                        <tr>
-                          <td id="chk_send">수신 안내 여부 *</td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" id="msg_send" value="Y"> 문자수신</td>
-                          <td><input type="checkbox" id="email_send" value="Y"> 이메일 수신</td>
-                        </tr>
-                        <tr>
-                          <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                          <td id="chk_option">선호하는 캠핑지 (선택)</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <input type="checkbox" class="likey" value="Y"> 나홀로&nbsp;
-                            <input type="checkbox" class="likey" value="Y"> 가족&nbsp;
-                            <input type="checkbox" class="likey" value="Y"> 친구&nbsp;
-                            <input type="checkbox" class="likey" value="Y"> 모임&nbsp;
-                            <input type="checkbox" class="likey" value="Y"> 이벤트
-                          </td>
-                        </tr>
-                      </table>
-                  </div>
-
-                    <div id="button_area">
-                      <input type="button" id="confirm" value="가입하기">
-                    </div>
-
-                    </form>
-                </div>
-
+              </td>
+            </tr>
+            <tr>
+              <td>비밀번호 *</td>
+              <td>
+                <input id="pwd" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상" onkeyup="chk_pwd(); chk_reg(this);">
+              </td>
+            </tr>
+            <tr>
+              <td>비밀번호 확인 *</td>
+              <td>
+                <input id="pwd_chk" class="input_box" value="" placeholder="특수문자(!@#$?), 영문자, 숫자 포함 8자 이상" onkeyup="chk_pwd(); chk_reg(this);">
+                &nbsp;<span id="chk_text" value=""></span>
+              </td>
+            </tr>
+            <tr>
+              <td>이름 *</td>
+              <td>
+                <input id="name" class="input_box" value="" placeholder="김네모" onkeyup="chk_kor(this);">
+              </td>
+            </tr>
+            <tr>
+              <td>생년월일 *</td>
+              <td>
+                <div class="birth" id="year_area">
+                  <select id="year" class="birth sel">
+                    <option value="0">년</option>
+                    <option th:each="i : ${#numbers.sequence(1920, 2022)}" th:value="${i}" th:text="${i}"></option>
+                  </select>  
               </div>
-            <!-- </div> -->
+              <div class="birth">
+                <select id="month" class="birth sel">
+                  <option value="0">월</option>
+                  <option th:each="i : ${#numbers.sequence(1, 12)}" th:value="${i}" th:text="${i}"></option>
+                </select>  
+              </div>
+              <div class="birth">
+                <select id="day" class="birth sel">
+                  <option value="0">일</option>
+                  <option th:each="i : ${#numbers.sequence(1, 31)}" th:value="${i}" th:text="${i}"></option>
+                </select>
+              </div>
+            </tr>
+            <tr>
+              <td>성별 *</td>
+              <td>
+                <div id="sex_area">
+                  <select id="sex">
+                    <option value="">성별</option>
+                    <option th:value="'F'" th:text="여자"></option>
+                    <option th:value="'M'" th:text="남자"</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>휴대전화 *</td>
+              <td>
+                <form id="phone_form" action="">
+                  <input type="text" id="phone" class="phone_box" value="" placeholder="전화번호를 입력하세요(숫자만 입력)" onkeyup="chk_phone(this);">  
+                  &nbsp;<input type="button" class="phone_confirm" value="인증번호" onclick="phone_number_chk();"> 
+                  &nbsp;<span id="chk_num" value=""></span>
+                  <input type="text" id="phone_chk" class="phone_box" value="" placeholder="인증번호를 입력하세요" onkeyup="chk_phone(this);">
+                  &nbsp;<input type="button" id="phone_num" class="phone_confirm" value="확      인" onclick="phone_num_chk();"> 
+                  <input type="hidden" id="number_chk" value="test">
+                </form>
+              </td>
+            </tr>
+          </table>
+
+          <hr id="bottom_hr">
+          
+          <div id="chk_area">
+            <table id="chk tbl">
+              <tr>
+                <td id="chk_send">수신 안내 여부 *</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" id="msg_send" value="Y"> 문자수신</td>
+                <td><input type="checkbox" id="email_send" value="Y"> 이메일 수신</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td id="chk_option">선호하는 캠핑지 (선택)</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="likey" value="Y"> 나홀로&nbsp;
+                  <input type="checkbox" class="likey" value="Y"> 가족&nbsp;
+                  <input type="checkbox" class="likey" value="Y"> 친구&nbsp;
+                  <input type="checkbox" class="likey" value="Y"> 모임&nbsp;
+                  <input type="checkbox" class="likey" value="Y"> 이벤트
+                </td>
+              </tr>
+            </table>
+        </div>
+
+          <div id="button_area">
+            <input type="button" id="confirm" value="가입하기" onclick="sendit();">
           </div>
 
-          <div style="text-align:center;">
+        </form>
+      </div>
 
-          </div>
-      </section>   
-      <!-- Hero Section End -->
-      <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+    </div>
+    </div>
+
+    <div style="text-align:center;">
+
+    </div>
+    </section>   
+    <!-- Hero Section End -->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
               
 
 </body>
