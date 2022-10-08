@@ -88,6 +88,22 @@ public class memberController {
   }
 
   /*
+   * 핸드폰 인증
+   */
+  @RequestMapping("/findPhone")
+  public String findPhone() {
+    return "/member/findPhone";
+  }
+
+  /*
+   * 이메일 인증
+   */
+  @RequestMapping("/findEmail")
+  public String findEmail() {
+    return "/member/findEmail";
+  }
+
+  /*
    * 리뷰 작성 페이지
    */
   @RequestMapping("/review")

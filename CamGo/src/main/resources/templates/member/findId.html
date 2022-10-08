@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>thymeleaf layout</title>
+    <title>아이디 찾기</title>
     <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 <style>
@@ -16,6 +16,30 @@ td > a {
 }
 
 </style>
+
+<script th:inline="javascript">
+    function certification(num) 
+    {
+        // 팝업창 정중앙 위치하도록 설정
+        let popupWidth = 500;
+        let popupHeight = 200;
+
+        let popupX = (window.screen.width / 2) - (popupWidth / 2);
+        let popupY = (window.screen.height / 2) - (popupHeight / 2);
+
+        let url = "./findPhone";
+        let target = "popup";
+        let option = 'width='+popupWidth+', height='+popupHeight+', top='+popupY+', left='+popupX+', resizable=no';
+        const chkForm = document.getElementById('chk_form');
+
+        wnd = window.open(url, target, option);
+
+        chkForm.action = url;
+        chkForm.target = target;
+        chkForm.submit();
+    }
+</script>
+
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
@@ -47,7 +71,7 @@ td > a {
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form name="findIdForm" action="#" method="post">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
@@ -71,13 +95,16 @@ td > a {
                         <h3 style="color: #7fad39;"><b>아이디 찾기</b></h3>
                         <br><br>
                         <h5>본인인증방식 선택</h5>
-                        <div style="display: flex;justify-content: center; padding:50px 50px 50px 50px;">
-                            <button type="submit" class="site-btn">핸드폰인증</button>&emsp;<button type="submit" class="site-btn">이메일인증</button>
-                        </div>
-                        <div class="hero__item set-bg" style="height:150px;">
-                            <div class="hero__text">
+                        <form id="chk_form" method="post" action="">
+                            <div style="display: flex;justify-content: center; padding:50px 50px 50px 50px;">
+                                <button type="button" class="site-btn" onclick="certification(1);">핸드폰인증</button>&emsp;
+                                <!-- 아이디가 이메일이라 아이디 찾기는 핸드폰만 진행하기 -->
+                                <!-- <button type="submit" class="site-btn" onclick="certification(2);">이메일인증</button> -->
                             </div>
-                        </div>
+                            <div class="hero__item set-bg" style="height:150px;">
+                                <div class="hero__text"></div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
