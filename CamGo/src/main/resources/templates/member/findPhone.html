@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 찾기 - 휴대전화 인증</title>
+    <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+<style>
+  body {
+    overflow-y:hidden
+  }
+
+  #phone_tbl {
+    margin: 10px;
+  }
+
+  .phone_area {
+    display: inline-flex;
+  }
+
+  input[type='text'] {
+    width: 150px;
+  }
+
+  #phone_chk {
+    margin-left: 17px;
+  }
+</style>
+
+<script th:inline="javascript">
+
+  // 휴대전화 인증번호 검증, 체크 : 숫자만 가능
+  function chk_num(num)
+  {
+    const regex = /^[0-9]+$/;
+    
+    if(!regex.test(num.value))
+    {
+      num.value = "";
+    }
+  }
+
+  // 휴대전화 인증번호 전송
+  function ph_sendit()
+  {
+    const phNum = document.getElementById('chk_number');
+    phNum.value = '12345';  // 추후 컨트롤러 다녀온 값으로 넣기
+  }
+  
+  // 이메일 인증번호 확인
+  function sendit()
+  {
+    const phone_text = document.getElementById('phone_text');
+    const chk_number = document.getElementById('chk_number');
+    const phone_chk = document.getElementById('phone_chk');
+
+    if(!phone_text.value) 
+    { 
+      alert('휴대전화 번호를 확인해주세요'); 
+      return false; 
+    }
+
+    if(!phone_chk.value || (phone_chk.value != chk_number.value))
+    {
+      alert('인증번호가 틀렸습니다.\n다시 확인해주세요.');
+      return false;
+    }
+    else
+    {
+      alert('인증하신 휴대전화로 아이디를 발송하였습니다.');
+      opener.location.href = '/login';
+      self.close();
+    }
+  }
+
+</script>
+
+<body>
+  <form name="chkPhone" method="post" action="#">
+    <table id="phone_tbl">
+      <tr>
+        <td>휴대전화 : </td>
+        <td>
+          <div class="phone_area">
+            <input type="text" id="phone_text" value="" onkeyup="chk_num(this);" maxlength="11" placeholder="숫자만 입력해주세요"> &nbsp;&nbsp;
+            <input type="button" id="ph_ok" value="인 증" onclick="ph_sendit();">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="phone_area">
+            <!-- 권한 걸어서 개발자만 볼 수 있도록 하기 -->
+            <input type="hidden" id="chk_number" value="">&emsp;&emsp;&emsp;&emsp;
+            <input type="text" id="phone_chk" value="" onkeyup="chk_num(this);">&emsp;
+            <input type="button" id="ok" value="확 인" onclick="sendit();">
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>

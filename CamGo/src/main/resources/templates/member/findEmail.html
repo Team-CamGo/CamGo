@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>아이디 찾기 - 이메일 인증</title>
+    <th:block th:replace="fragments/head :: headFragment"></th:block>
+</head>
+<style>
+  body {
+    overflow-y:hidden
+  }
+
+  #email_tbl {
+    margin: 10px;
+  }
+
+  .email_area {
+    display: inline-flex;
+  }
+
+  input[type='text'] {
+    width: 120px;
+  }
+
+  #email_text {
+    display: none;
+    margin-left: 10px;
+  }
+</style>
+
+<script th:inline="javascript">
+
+  // 아이디 정규식 : 영어, 숫자, - 만 가능
+  function chk_id(id)
+  {
+    const regex = /^[a-z|A-Z|0-9|_-]+$/;
+
+    if(!regex.test(id.value))
+    {
+      id.value = "";
+    }
+  }
+
+  // 아이디 재작성 버튼
+  function reset_text()
+  {
+    const email_first = document.getElementById('email_first');
+    const email_last = document.getElementById('email_last');
+    const email_text = document.getElementById('email_text');
+    const reset = document.getElementById('reset');
+
+    email_first.value = "";
+    email_last.style.display = "";
+    email_last.selectedIndex = "0";
+    email_text.style.display = "none";
+    reset.style.display = "";
+  }
+
+  // 이메일 select
+  function email_select(email)
+  {
+    const email_last = document.getElementById('email_last');
+    const email_text = document.getElementById('email_text');
+    const reset = document.getElementById('reset');
+    const idx = email.selectedIndex;
+    
+    if(email.options[idx].value == "4")
+    {
+      email_last.style.display = "none";
+      email_text.style.display = "inline";
+      reset.style.display = "inline";
+    }
+    else
+    {
+      email_last.style.display = "";
+      email_text.style.display = "none";
+      reset.style.display = "";
+    }
+  }
+
+  // 이메일 인증번호 보내기
+  function chk_email()
+  {
+    let chk_number = document.getElementById('chk_number');
+    chk_number.value = '12345'; // 추후 컨트롤러 다녀온 값으로 넣기
+  }
+
+  // 이메일 인증번호 검증, 체크 : 숫자만 가능
+  function chk_num(num)
+  {
+    const regex = /^[0-9]+$/;
+    
+    if(!regex.test(num.value))
+    {
+      num.value = "";
+    }
+  }
+  
+  // 이메일 인증번호 확인
+  function sendit()
+  {
+    const email_first = document.getElementById('email_first');
+    const email_idx = document.getElementById('email_last').selectedIndex;
+    const email_text = document.getElementById('email_text');
+    const email_num= document.getElementById('email_chk');
+
+    if((!email_first.value || email_idx == "0") || (email_idx == "4" && !email_text.value)) 
+    { 
+      alert('이메일을 확인해주세요'); 
+      return false; 
+    }
+
+    if(!email_num.value  || (email_num.value != chk_number.value))
+    {
+      alert('인증번호가 틀렸습니다.\n다시 확인해주세요.');
+      return false;
+    }
+    else
+    {
+      // 임시 비밀번호 제공 후 팝업창 닫고 로그인 화면으로 이동 
+      alert('임시 비밀번호 : testPwd123\n확인 시 로그인화면으로 이동합니다.');
+      opener.location.href = '/login';
+      self.close();
+    }
+  }
+
+</script>
+
+<body>
+  <form name="chkEmail" method="post" action="#">
+    <table id="email_tbl">
+      <tr>
+        <td>이메일 :&nbsp;</td>
+        <td>
+          <div class="email_area">
+            <input type="text" id="email_first" value="" onkeyup="chk_id(this);">&emsp;@&nbsp;
+            <input type="text" id="email_text" value="" placeholder="abc.co.kr"> &nbsp;&nbsp;
+            
+            <select id="email_last" onchange="email_select(this);">
+              <option value="">이메일</option>
+              <option value="1">gmail.com</option>
+              <option value="2">naver.com</option>
+              <option value="3">daum.net</option>
+              <option value="4">직접입력</option>
+            </select>
+            &emsp;
+            <input type="button" id="reset" value="재입력" onclick="reset_text();">
+            &emsp;
+            <input type="button" id="send" value="인 증" onclick="chk_email();">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <br><br>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="email_area">
+            <!-- 권한 걸어서 개발자만 볼 수 있도록 하기 -->
+            <input type="hidden" id="chk_number" value="">&emsp;&emsp;&emsp;&emsp;
+            <input type="text" id="email_chk" value="" onkeyup="chk_num(this);">&emsp;
+            <input type="button" id="ok" value="확 인" onclick="sendit();">
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>

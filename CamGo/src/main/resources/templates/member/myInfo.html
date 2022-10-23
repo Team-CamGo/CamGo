@@ -211,7 +211,44 @@
         line-height: 39px;
         display: block;
       }
-      </style>
+  </style>
+
+  <script th:inline="javascript">
+    // 테스트용으로 데이터 넣으려고 작성한 코드. 컨트롤러 연결 시 삭제 예정
+    window.onload = function(){
+      let memberName = document.getElementById('memberName');
+      let email_first = document.getElementById('email_first');
+      //let email_last = document.getElementById('email_last');
+      //let list = document.getElementsByClassName('list');
+      let name = document.getElementById('name');
+      let year = document.getElementById('year').selectedIndex;
+      let month = document.getElementById('month').selectedIndex;
+      let day = document.getElementById('day').selectedIndex;
+      let sex = document.getElementById('sex');
+      let msg_send = document.getElementById('msg_send');
+      let email_send = document.getElementById('email_send');
+      let likey = document.getElementsByClassName('likey');
+
+      memberName.innerHTML = "test";
+      email_first.value = "test";
+      //$('.email_last').val('1');  select box 선택이 왜 안되지
+      name.value = "테스트";
+      year = "1994";
+      month = "1";
+      day = "13";
+      sex = "1";
+      msg_send.checked = true;
+      email_send.checked = true;
+      for(let i = 0; i < likey.length; i++)
+      {
+        if(i%2 == 0)
+          likey[i].checked = true;
+      }
+
+    }
+
+  </script>
+
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
@@ -228,7 +265,8 @@
                         <div>
                           <span>Mypage</span> <br><br>
                           
-                          <span class="member_name">회원이름</span> &nbsp;&nbsp;&nbsp;
+                          <!-- <span class="member_name">회원이름</span> &nbsp;&nbsp;&nbsp; -->
+                          <span id="memberName" class="member_name"></span> &nbsp;&nbsp;&nbsp;
                           <a href="#" class="div_font">회원정보 수정</a>
                           <br>
                         
@@ -289,7 +327,7 @@
                         <td>
                           <input id="email_first" value=""> @
                           <div class="email_area">
-                            <select id="email_last">
+                            <select class="email_last">
                               <option value="">이메일</option>
                               <option value="1">gmail.com</option>
                               <option value="2">naver.com</option>
@@ -322,20 +360,20 @@
                         <td>
                           <div class="birth">
                            <select id="year" class="birth sel">
-                              <option value="">년</option>
-                              <option value="1999">1999</option>
+                            <option value="0">년</option>
+                            <option th:each="i : ${#numbers.sequence(1920, 2022)}" th:value="${i}" th:text="${i}"></option>
                             </select>  
                           </div>
                           <div class="birth">
                             <select id="month" class="birth sel">
-                              <option value="">월</option>
-                              <option value="1">1</option>
+                              <option value="0">월</option>
+                              <option th:each="i : ${#numbers.sequence(1, 12)}" th:value="${i}" th:text="${i}"></option>
                             </select>  
                           </div>
                           <div class="birth">
                             <select id="day" class="birth sel">
-                              <option value="">일</option>
-                              <option value="1">1</option>
+                              <option value="0">일</option>
+                              <option th:each="i : ${#numbers.sequence(1, 31)}" th:value="${i}" th:text="${i}"></option>
                             </select>
                           </div>
                         </td>
@@ -345,8 +383,8 @@
                         <td>
                           <select id="sex">
                             <option value="">성별</option>
-                            <option value="1">여자</option>
-                            <option value="2">남자</option>
+                            <option th:value="'F'" th:text="여자"></option>
+                            <option th:value="'M'" th:text="남자"</option>
                           </select>
                         </td>
                       </tr>

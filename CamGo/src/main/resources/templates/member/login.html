@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>thymeleaf layout</title>
+    <title>로그인</title>
     <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 <style>
@@ -14,8 +14,27 @@ td > a {
 .simpleJoin {
     border: black 1px solid;
 }
-
 </style>
+
+<script th:inline="javascript">
+    function sendit()
+    {
+        const id = document.getElementById('idText').value;
+        const pwd = document.getElementById('pwdText').value;
+
+        // 추후 컨트롤러 연결할 예정. 일단 임시로 아이디, 비번 입력하면 마이페이지로 이동
+        if(!id || !pwd)
+            alert('아이디 또는 비밀번호를 확인해주세요.');
+        else
+        {
+            if(id != "test@gmail.com" || pwd != "test123")
+                alert('아이디 또는 비밀번호를 확인해주세요.');
+            else if(id == "test" || pwd == "test123")
+                location.href = "/myInfo";
+        }
+    }
+</script>
+
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
     <th:block th:replace="fragments/hero :: heroFragment"></th:block>
@@ -34,19 +53,21 @@ td > a {
                         <h2 style="color: #7fad39;"><b>CAMGO</b></h2>
                         <br>
                         <div style="display: flex;justify-content: center;">
-                            <table id="info_explain" style="text-align: center;">
-                                <tr>
-                                    <td style="text-align:center;"><input type="text" size="30" placeholder="아이디"/></td>
-                                    <td rowspan="2"><div style="background-color: yellowgreen; width: 60px; height: 60px; text-align: center; line-height: 4;">로그인</div></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="password" size="30" placeholder="비밀번호"/></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" style="text-align: center; "><a href="/findId">아이디 찾기 | </a><a href="/findPw">비밀번호 찾기 | </a><a href="/join">회원가입</a></td>
-                                </tr>
-                            </table>
+                            <form name="loginForm" method="post" action="#">
+                                <table id="info_explain" style="text-align: center;">
+                                    <tr>
+                                        <td style="text-align:center;"><input type="text" id="idText" size="30" placeholder="아이디"/></td>
+                                        <td rowspan="2"><input type="button" style="border:none; background-color: yellowgreen; width: 70px; height: 70px; text-align: center; vertical-align: middle; line-height: 4;" onclick="sendit();" value="로그인"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="password" id="pwdText" size="30" placeholder="비밀번호"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="text-align: center; "><a href="/findId">아이디 찾기 | </a><a href="/findPw">비밀번호 찾기 | </a><a href="/join">회원가입</a></td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
                         <div style="padding:30px 30px 30px 30px;">
                             <span class="simpleJoin">네이버 간편회원가입</span>&emsp;<span class="simpleJoin">카카오 간편회원가입</span><br><br>

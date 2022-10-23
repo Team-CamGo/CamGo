@@ -14,6 +14,30 @@
         .sidebar__item .options_list li .option_detail {
             margin-top : 10px;
         }
+        
+
+		.price-range-wrap .range-slider .price-input2 {
+			position: relative;
+		}
+		
+		.price-range-wrap .range-slider .price-input2:after {
+			position: absolute;
+			left: 90px;
+			top: 13px;
+			height: 1px;
+			width: 5px;
+			background: #dd2222;
+			content: "";
+		}
+		
+		.price-range-wrap .range-slider .price-input2 input {
+			font-size: 16px;
+			color: #dd2222;
+			font-weight: 700;
+			max-width: 40%;
+			border: none;
+			display: inline-block;
+		}
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", ready);
@@ -42,6 +66,17 @@
             }
         }
         
+        function ViewSelection(v)
+        {
+			event.stopPropagation();
+			
+			if(v!="1")
+			{
+				alert(v + "모아보기");
+			}
+		}
+		
+        
     </script>
     <div class="col-lg-3 col-md-5">
         <div class="sidebar">
@@ -49,7 +84,7 @@
                 <h4>Options</h4>
                 <ul class="options_list">
                     <li>
-                        <div onclick="show_list('region')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Region</div>
+                        <div onclick="show_list('region')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;지역 선택하기</div>
                         <div name="view_options_list" id="view_region" class="option_detail">
                             <select name="region_list" value="" onchange="" style="display:none;">
                                 <option value="">choose</option>
@@ -71,56 +106,56 @@
                         </div>
                     </li>
                     <li>
-                        <div onclick="show_list('date')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Date</div>
+                        <div onclick="show_list('date')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;일정 선택하기</div>
                         <div class="option_detail" name="view_options_list" id="view_date">
                             시작 <input type="date" value=""><br>
                             퇴실 <input type="date" value="">
                         </div>
                     </li>
                     <li>
-                        <div onclick="show_list('accommodations')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Accommodations</div>
+                        <div onclick="show_list('accommodations')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;숙박 모아보기</div>
                         <div class="option_detail" name="view_options_list" id="view_accommodations">
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="1" onclick="ViewSelection(this.id);">
                                 <label for="large">
-                                    camping
-                                    <input type="checkbox" id="large">
+                                   	캠핑
+                                    <input type="radio" id="large">
                                 </label>
                             </div>
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="2" onclick="ViewSelection(this.id);">
                                 <label for="large">
-                                    hotel
+                                    호텔
                                     <input type="radio" id="large">
                                 </label>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div onclick="show_list('place')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Place</div>
+                        <div onclick="show_list('place')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;장소 모아보기</div>
                         <div class="option_detail" name="view_options_list" id="view_place">
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="3" onclick="ViewSelection(this.id);">
                                 <label for="large">
-                                    ocean
-                                    <input type="checkbox" id="large">
+                                    바다
+                                    <input type="radio" id="large">
                                 </label>
                             </div>
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="4" onclick="ViewSelection(this.id);">
                                 <label for="large">
-                                    mountain
+                                    계곡
                                     <input type="radio" id="large">
                                 </label>
                             </div>
                         </div>
                         </li>
                     <li>
-                        <div onclick="show_list('utility')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;Utility</div>
+                        <div onclick="show_list('utility')"><i class="fa fa-caret-down"></i>&nbsp;&nbsp;옵션 모아보기</div>
                         <div class="option_detail" name="view_options_list" id="view_utility">
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="5" onclick="ViewSelection(this.id);">
                                 <label for="large">
-                                    pool
-                                    <input type="checkbox" id="large">
+                                    수영장
+                                    <input type="radio" id="large">
                                 </label>
                             </div>
-                            <div class="sidebar__item__size">
+                            <div class="sidebar__item__size" id="6" onclick="ViewSelection(this.id);">
                                 <label for="large">
                                     BBQ
                                     <input type="radio" id="large">
@@ -132,16 +167,16 @@
             </div>
             
             <div class="sidebar__item">
-                <h4>Price</h4>
+                <h4>금액대 별 검색</h4>
                 <div class="price-range-wrap">
                     <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                        data-min="10" data-max="540">
+                        data-min="100000" data-max="5000000">
                         <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" id="min-price"></span>
+                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" id="max-price"></span>
                     </div>
                     <div class="range-slider">
-                        <div class="price-input">
+                        <div class="price-input2">
                             <input type="text" id="minamount">
                             <input type="text" id="maxamount">
                         </div>
@@ -150,7 +185,7 @@
             </div>
             <div class="sidebar__item">
                 <div class="latest-product__text">
-                    <h4>recommend</h4>
+                    <h4>추천여행지</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <a href="campingdetail" class="latest-product__item">
@@ -215,4 +250,18 @@
             </div>
         </div>
     </div>
+    
+    <script>
+    
+		let searchPrice_min = document.getElementById("min-price");
+		let searchPrice_max = document.getElementById("max-price");
+		
+		searchPrice_min.addEventListener('mouseup', ()=> {
+			alert(document.getElementById("minamount").value);
+		});
+		
+		searchPrice_max.addEventListener('mouseup', ()=> {
+			alert(document.getElementById("maxamount").value);
+		});
+	</script>
 </html>
