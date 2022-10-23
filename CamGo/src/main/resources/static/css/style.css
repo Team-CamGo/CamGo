@@ -408,7 +408,9 @@ ol {
 }
 
 .header__logo {
+	margin-top:5px;
 	padding: 15px 0;
+	text-align: center;
 }
 
 .header__logo a {
