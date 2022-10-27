@@ -7,82 +7,54 @@
     <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
+<style>
+    .withdrawal_area {
+        height:900px;
+        width: 100%;
+    }
+    
+    .withdrawal_text_area {
+        padding-left: 26%;
+    }
+</style>
+
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
     <!-- Hero Section Begin -->
+   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- Hero Section End -->
     <section class="hero">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
-                        </ul>
+            <div class="withdrawal_area">
+            <div class="withdrawal_text_area">
+                <div class="hero__item set-bg" style="height:300px;">
+                    <div class="hero__text">
+                        <h3><b>회원탈퇴</b></h3>
+                        <hr>
+                            <span style="display:inline-block; width:150px;">비밀번호</span><span><input type="password" size="30"/></span><br><br>
+                            <span style="display:inline-block; width:150px;">비밀번호 확인</span><span><input type="password" size="30"/></span>
                     </div>
                 </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" style="height:300px;">
-                        <div class="hero__text">
-                            <h3><b>회원탈퇴</b></h3>
-                            <hr>
-                                <span style="display:inline-block; width:150px;">비밀번호</span><span><input type="password" size="30"/></span><br><br>
-                                <span style="display:inline-block; width:150px;">비밀번호 확인</span><span><input type="password" size="30"/></span>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" style="height:150px;">
-                        <div class="hero__text">
-                            <h5><b>탈퇴 유의사항</b></h5>
-                            <pre>
+                <div class="hero__item set-bg" style="height:150px;">
+                    <div class="hero__text">
+                        <h5><b>탈퇴 유의사항</b></h5>
+                        <pre>
 
-  - 쪽지, 친구, 포인트, 적립금, 회원 등급, 관심 브랜드 등의 데이터는 삭제됩니다.
-  - 각종 게시판의 게시글, 댓글 등의 데이터는 삭제되지 않습니다. 반드시 탈퇴 전 직접 삭제하셔야 합니다.
-  - 회원 탈퇴 후 5일 이내 재 로그인 시 탈퇴 취소가 가능합니다.
-  - 회원 탈퇴 후 5일 뒤에는 모든 회원 정보가 삭제되며 재가입시에도 기존 아이디는 더 이상 사용하실 수 없습니다.
-  - 회원 탈퇴 후 모든 스토어 주문 정보는 5년간 분리 보관됩니다.
-                            </pre>
-                        </div>
+- 쪽지, 친구, 포인트, 적립금, 회원 등급, 관심 브랜드 등의 데이터는 삭제됩니다.
+- 각종 게시판의 게시글, 댓글 등의 데이터는 삭제되지 않습니다. 반드시 탈퇴 전 직접 삭제하셔야 합니다.
+- 회원 탈퇴 후 5일 이내 재 로그인 시 탈퇴 취소가 가능합니다.
+- 회원 탈퇴 후 5일 뒤에는 모든 회원 정보가 삭제되며 재가입시에도 기존 아이디는 더 이상 사용하실 수 없습니다.
+- 회원 탈퇴 후 모든 스토어 주문 정보는 5년간 분리 보관됩니다.
+                        </pre>
                     </div>
-                    <hr>
-                    <span style="display:inline-block; width:30px;"><input type="radio"></span><span style="display:inline-block; width:400px;">안내사항을 모두 확인하였으며, 이에 동의합니다.</span><span><button type="submit" class="site-btn">회원탈퇴</button></span>
                 </div>
+                <hr>
+                <span style="display:inline-block; width:30px;"><input type="radio"></span><span style="display:inline-block; width:400px;">안내사항을 모두 확인하였으며, 이에 동의합니다.</span><span><button type="submit" class="site-btn">회원탈퇴</button></span>
             </div>
         </div>
+     </div>
+        
         <div style="text-align:center;">
 
         </div>
