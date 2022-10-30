@@ -10,7 +10,7 @@ public class campingController {
     /*
      * 캠핑지 목록
      */
-    @RequestMapping("/campinglist")
+    @RequestMapping("/campingList")
     public String campingList() {
         return "/camping/campingList.html";
     }
@@ -18,7 +18,7 @@ public class campingController {
     /*
      * 캠핑지 상세페이지
      */
-    @RequestMapping("/campingdetail")
+    @RequestMapping("/campingDetail")
     public String campingDetail() {
         return "/camping/campingDetail.html";
     }
@@ -26,17 +26,17 @@ public class campingController {
     /*
      * 캠핑지 예약페이지
      */
-    @RequestMapping("/campingrsvt")
-    public String campingRsvt() {
-        return "/camping/campingRsvt.html";
+    @RequestMapping("/campingRsvtIns")
+    public String campingRsvtIns() {
+        return "/camping/campingRsvtIns.html";
     }
 
     /*
      * 예약정보 페이지
      */
-    @RequestMapping("/rsvtinfo")
-    public String rsvtInfo() {
-        return "/camping/rsvtInfo.html";
+    @RequestMapping("/rsvtDetail")
+    public String rsvtDetail() {
+        return "/camping/rsvtDetail.html";
     }
 
 }
