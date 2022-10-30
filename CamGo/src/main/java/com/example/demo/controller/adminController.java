@@ -7,11 +7,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class adminController {
     /*
-        공지사항리스트 페이지
+        공지사항 작성 페이지
     */
     @RequestMapping("/noticeWrite")
-    public String noticeWrite() {
-    return "/admin/notice";
+        public String noticeWrite() {
+        return "/admin/noticeWrite";
+    }
+
+    /*
+        공지사항 수정
+    */
+    @RequestMapping("/noticeModify")
+        public String modify() {
+        return "/admin/noticeModify";
+    }
+
+    /*
+        공지사항 리스트 페이지
+    */
+    @RequestMapping("/noticeList")
+        public String noticeList() {
+        return "/admin/noticeList";
+    }
+
+    /*
+        공지사항 문의
+        TODO 무슨 기능인지 확인 필요
+    */
+    @RequestMapping("/noticeAnswer")
+    public String noticeAnswer() {
+        return "/admin/noticeAnswer";
     }
 
     /*
