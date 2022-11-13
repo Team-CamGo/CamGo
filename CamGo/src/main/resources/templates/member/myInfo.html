@@ -8,209 +8,156 @@
 </head>
 
   <style>
-      .container {
-        margin-left:auto; 
-        margin-bottom:auto;
-      }
+    .container {
+      margin-left:auto; 
+      margin-bottom:auto;
+    }
 
-      .join_text {
-        text-align: center; 
-        margin-top: 5%;
-      }
+    .join_text {
+      text-align: center; 
+      margin-top: 5%;
+    }
 
-      .join_info {
-        height:90%;
-        padding-left: 18%;
-      }
+    .join_info {
+      height:90%;
+      padding-left: 18%;
+    }
 
-      .div_font {
-        font-size: 13px;
-        color: #1c1c1c;
-        line-height: 15px;
-      }
+    .div_font {
+      font-size: 13px;
+      color: #1c1c1c;
+      line-height: 15px;
+    }
 
-      .member_name {
-        font-size:35px; 
-        color:gray; 
-        font-weight:bold;
-      }
+    .member_name {
+      font-size:35px; 
+      color:gray; 
+      font-weight:bold;
+    }
 
-      .member_info {
-        padding:2% 1% 2% 2%;
-        display: flex;
-        justify-content: space-between;
-      }
+    .member_info {
+      padding:2% 1% 2% 2%;
+      display: flex;
+      justify-content: space-between;
+    }
 
-      .info_text_area {
-        background-color: lightgray; 
-        height: 200px; 
-        margin: 3% 0 3% 0; 
-        vertical-align: middle;
-      }
+    .info_text_area {
+      background-color: lightgray; 
+      height: 200px; 
+      margin: 3% 0 3% 0; 
+      vertical-align: middle;
+    }
 
-      .info_extra_area {
-        display:inline-block;
-        padding-top: 8%;
-        width: 400px;
-      }
+    .info_extra_area {
+      display:inline-block;
+      padding-top: 8%;
+      width: 400px;
+    }
 
-      .info_extra td {
-        width: 150px;
-        text-align: center;
-      }
+    .info_extra td {
+      width: 150px;
+      text-align: center;
+    }
 
-      #guide {
-        text-align: right;
-        font-size: 11px;
-      }
+    #guide {
+      text-align: right;
+      font-size: 11px;
+    }
 
-      #info_explain {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: left;
-      }
+    #info_explain {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
 
-      #info_explain td:first-child {
-        width: 150px;
-        height:70px;
-        /* padding-bottom: 30px; */
-      }
+    #info_explain td:first-child {
+      width: 150px;
+      height:70px;
+      /* padding-bottom: 30px; */
+    }
 
-      #info_explain td:last-child {
-        width: 350px;
-        height:70px;
-        /* padding-bottom: 30px; */
-      }
+    #info_explain td:last-child {
+      width: 350px;
+      height:70px;
+      /* padding-bottom: 30px; */
+    }
 
-      #email_first {
-        width: 190px;
-        height: 30px;
-      }
+    #email_first {
+      width: 190px;
+      height: 30px;
+    }
 
-      .email_area {
-        display:inline-flex;
-      }
-      
-      #phone {
-        /* margin-right: 5px; */
-        margin-bottom: 5px;
-      }
+    .email_area {
+      display:inline-flex;
+    }
+    
+    #phone {
+      /* margin-right: 5px; */
+      margin-bottom: 5px;
+    }
 
-      .phone box {
-        width:330px;
-        height:30px;
-      }
+    .phone box {
+      width:330px;
+      height:30px;
+    }
 
-      .input_box {
-        width: 320px;
-        height: 30px;
-      }
-      
-      .birth {
-        display: inline-flex;
-        margin-right: 10px;
-      }
-      
-      .birth sel {
-        width: 180px;
-        height: 40px;
-      }
+    .input_box {
+      width: 320px;
+      height: 30px;
+    }
+    
+    .birth {
+      display: inline-flex;
+      margin-right: 10px;
+    }
+    
+    .birth sel {
+      width: 180px;
+      height: 40px;
+    }
 
-      #phone_confirm:hover {
-        cursor: pointer;
-      }
+    #phone_confirm:hover {
+      cursor: pointer;
+    }
 
-      #button_area {
-        text-align: center;
-        padding-top: 50px;
-      }
+    #button_area {
+      text-align: center;
+      padding-top: 50px;
+    }
 
-      #bottom_hr {
-        margin-top: 30px; 
-        margin-bottom: 30px;
-      }
+    #bottom_hr {
+      margin-top: 30px; 
+      margin-bottom: 30px;
+    }
 
-      #chk_send { 
-        font-weight: bold; 
-      }
+    #chk_send { 
+      font-weight: bold; 
+    }
 
-      #chk_option { 
-        font-weight: bold; 
-      }
+    #chk_option { 
+      font-weight: bold; 
+    }
 
-      #confirm {
-        width: 400px;
-        height: 50px;
-        margin-bottom:10px;
-      }
+    #confirm {
+      width: 400px;
+      height: 50px;
+      margin-bottom:10px;
+    }
 
-      #confirm:hover {
-        cursor: pointer;
-        background-color: darkseagreen;
-        border: 1px solid darkseagreen;
-      }
+    #confirm:hover {
+      cursor: pointer;
+      background-color: darkseagreen;
+      border: 1px solid darkseagreen;
+    }
 
-      #chk_area {
-        margin-left: auto;
-        margin-right: auto;
-        width: 410px;
-        height: 150px;
-        text-align: left;
-      }
+    #chk_area {
+      margin-left: auto;
+      margin-right: auto;
+      width: 410px;
+      height: 150px;
+      text-align: left;
+    }
 
-      /* 좌측 회원 메뉴바 */
-      .member_row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -1px;
-      }
-
-      .member_area {
-        flex: 0 0 20%;
-        max-width: 25%;
-      }
-
-      .member_categories {
-        position: relative;
-      }
-
-      .member_categories_all {
-        background: #7fad39;
-        position: relative;
-        padding: 10px 25px 10px 40px;
-        cursor: pointer;
-      }
-
-      .member_categories i {
-        font-size: 16px;
-        color: #ffffff;
-        margin-right: 10px;
-      }
-      .member_bar {
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .member_categories > ul {
-        display: block;
-        padding: 10px 10px 10px 40px;
-        border: 0.5px solid lightgray;
-      }
-
-      .member_categories > ul > li {
-        display: block;
-        padding: 5px;
-      }
-
-      .member_categories > ul > li > a {
-        font-size: 16px;
-        color: #1c1c1c;
-        line-height: 39px;
-        display: block;
-      }
   </style>
 
   <script th:inline="javascript">
@@ -247,13 +194,20 @@
 
     }
 
+    // 토글 하려고 수정중...
+    function toggleSlide() {
+      let memberUl = document.getElementsByClassName('member_categories')[0].childNodes[3];
+      console.log(memberUl);
+      memberUl.toggleSlide(400);
+  }
+
   </script>
 
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
    <!-- Hero Section Begin -->
-   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- <th:block th:replace="fragments/hero :: heroFragment"></th:block> -->
    <!-- Hero Section End -->
    <section class="hero">
     <div class="container">
@@ -296,15 +250,17 @@
         <div class="member_row">
             <div class="member_area">
                 <div class="member_categories">
-                    <div class="member_categories_all">
-                        <i class="member_bar"></i>
-                        <span></span>
+                    <div class="member_categories_all" onclick="toggleSlide();">
+                        <i class="fa fa-bars"></i>
+                        <span>마이페이지</span>
                     </div>
                     <ul>
-                        <li><a href="#">예약내역조회</a></li>
+                        <li><a href="/reservation">예약내역조회</a></li>
+                        <li><a href="/buyProduct">결제내역조회</a></li>
                         <li><a href="#">1:1 문의</a></li>
                         <li><a href="#">리뷰내역조회</a></li>
-                        <li><a href="#">좋아요</a></li>
+                        <li><a href="/like">좋아요</a></li>
+                        <li><a href="/withdrawal">회원탈퇴</a></li>
                     </ul>
                 </div>
             </div>

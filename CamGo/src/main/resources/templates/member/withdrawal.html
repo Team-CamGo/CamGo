@@ -16,13 +16,71 @@
     .withdrawal_text_area {
         padding-left: 26%;
     }
+
+    #chk_text {
+        padding-left: 150px;
+    }
 </style>
+
+<script th:inline="javascript">
+// 비밀번호 확인
+  function chk_pwd()
+  {
+    const pwd = document.getElementById('pwd');
+    const pwd_chk = document.getElementById('pwd_chk');
+    const chk_text = document.getElementById('chk_text');
+
+    if(pwd.value != pwd_chk.value)
+    {
+        chk_text.innerHTML = '비밀번호가 일치하지 않습니다';
+        chk_text.style.color = 'red';
+    }
+    else
+    {
+        chk_text.innerHTML = '';
+    }
+  }
+
+  function sendit()
+  {
+    let pwd = document.getElementById('pwd');
+    let pwd_chk = document.getElementById('pwd_chk');
+    let real_pwd = document.getElementById('real_pwd');
+    let radio = document.getElementById('chk_radio');
+
+    if(!pwd.value || !pwd_chk.value)
+    {
+        alert('비밀번호를 입력해주세요');
+        return false;
+    }
+    
+    if(pwd.value != pwd_chk.value || pwd.value != real_pwd.value)
+    {
+        alert('비밀번호를 다시 확인해주세요');
+        return false;
+    }
+
+    if(!radio.checked)
+    {
+        alert('안내사항 동의에 체크해주세요');
+        return false;
+    }
+
+    // 컨트롤러 -> db 추가예정
+    if(pwd.value == real_pwd.value)
+    {
+        alert('탈퇴가 완료되었습니다');
+        location.href = '/';
+    }
+  }
+
+</script>
 
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
     <!-- Hero Section Begin -->
-   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- <th:block th:replace="fragments/hero :: heroFragment"></th:block> -->
    <!-- Hero Section End -->
     <section class="hero">
         <div class="container">
@@ -32,8 +90,13 @@
                     <div class="hero__text">
                         <h3><b>회원탈퇴</b></h3>
                         <hr>
-                            <span style="display:inline-block; width:150px;">비밀번호</span><span><input type="password" size="30"/></span><br><br>
-                            <span style="display:inline-block; width:150px;">비밀번호 확인</span><span><input type="password" size="30"/></span>
+                            <span style="display:inline-block; width:150px;" onkeyup="chk_pwd();">비밀번호</span>
+                            <input id="pwd" type="password" size="30"/><br><br>
+                            <span style="display:inline-block; width:150px;">비밀번호 확인</span>
+                            <input id="pwd_chk" type="password" size="30" onkeyup="chk_pwd();"><br>
+                            <span id="chk_text" value=""></span>
+                            <input type="hidden" id="real_pwd" value="test123">
+                            
                     </div>
                 </div>
                 <div class="hero__item set-bg" style="height:150px;">
@@ -50,7 +113,9 @@
                     </div>
                 </div>
                 <hr>
-                <span style="display:inline-block; width:30px;"><input type="radio"></span><span style="display:inline-block; width:400px;">안내사항을 모두 확인하였으며, 이에 동의합니다.</span><span><button type="submit" class="site-btn">회원탈퇴</button></span>
+                <span style="display:inline-block; width:30px;"><input type="radio" id="chk_radio"></span>
+                <span style="display:inline-block; width:400px;">안내사항을 모두 확인하였으며, 이에 동의합니다.</span>
+                <button type="submit" class="site-btn" onclick="sendit();">회원탈퇴</button>
             </div>
         </div>
      </div>

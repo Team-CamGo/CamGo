@@ -7,200 +7,223 @@
   <th:block th:replace="fragments/head :: headFragment"></th:block>
 </head>
 
-  <style>
-      .container {
-        margin-left:auto; 
-        margin-bottom:auto;
+<style>
+    .container {
+      margin-left:auto; 
+      margin-bottom:auto;
+    }
+
+    .list_text {
+      text-align: center; 
+      margin-top: 3%;
+    }
+
+    .list_area {
+      height:900px;
+      width: 75%;
+      padding-left: 5%;
+    }
+
+    .div_font {
+      font-size: 13px;
+      color: #1c1c1c;
+      line-height: 15px;
+    }
+
+    .member_name {
+      font-size:35px; 
+      color:gray; 
+      font-weight:bold;
+    }
+
+    .member_info {
+      padding:2% 1% 2% 2%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .info_text_area {
+      background-color: lightgray; 
+      height: 200px; 
+      margin: 3% 0 3% 0; 
+      vertical-align: middle;
+    }
+
+    .info_extra_area {
+      display:inline-block;
+      padding-top: 8%;
+      width: 400px;
+    }
+
+    .info_extra td {
+      width: 150px;
+      text-align: center;
+    }
+
+    #info_explain {
+      margin-left: auto;
+      margin-right: auto;
+      width:100%;
+      text-align: left;
+    }
+
+    #info_explain th {
+      width: 100%;
+      height:50px;
+    }
+    
+    #res {
+      width: 150px;
+      height:50px;
+      text-align: left;
+      padding: 0;
+      border-bottom: 4px solid darkgray;
+    }
+
+    #info_explain td {
+      width: 200px;
+      height: 70px;
+      text-align: center;
+    }
+
+    #info_explain tr:first-child {
+      border-bottom: 1px solid #ffffff;
+    }
+
+    #info_explain tr {
+      border-bottom: 1px solid lightgray;
+    }
+
+    #res_txt {
+      margin-right: 35px;
+    }
+
+    .btn_area {
+      display: contents;
+      margin-right: 55px;
+    }
+
+    .btn {
+      border: 1px solid gray;
+      height: 32px;
+      line-height: 15px;
+      background-color: lightgray;
+    }
+
+    .date {
+      background-color: #ffffff;
+    }
+
+    .res_area {
+      display: inline-table;
+      margin-right: 55px;
+    }
+
+    #confirm {
+      width: 400px;
+      height: 50px;
+      margin-bottom:10px;
+    }
+
+    #confirm:hover {
+      cursor: pointer;
+      background-color: darkseagreen;
+      border: 1px solid darkseagreen;
+    }
+
+    /* 페이징 */
+    .paging {
+      margin-top: 5%;
+    }
+
+    .paging > a {
+      font-size: 15px;
+      color: #1c1c1c;
+      line-height: 15px;
+    }
+  </style>
+  
+  <script th:inline="javascript">
+    let today = new Date();   // 오늘 날짜 
+    
+    // 기간 조회
+    function selectDay(day='')
+    {
+
+      let sdate = document.getElementById('start_date');
+      let edate = document.getElementById('end_date');
+     
+      if(day)
+      {
+        sdate.value = dateFormatter(today, day); 
+        edate.value = dateFormatter(today, 0); 
+      }
+      else
+      {
+        sdate.value = ''; 
+        edate.value = '';
+      }
+    }
+
+    // 날짜 포맷(yyyy-MM-dd) 형식으로 반환 및 날짜 계산
+    function dateFormatter(today, day='')
+    {
+      let year = today.getFullYear();
+      let month = today.getMonth() + 1;   // month는 0부터 시작
+      let date = today.getDate();
+
+      let newYear = year;
+      let newMonth = month;
+      let newDate = date;
+
+      if(day == '7')      
+      { 
+        newDate = date - 7; 
+        newDate = ("0"+newDate).slice(-2); 
+      }
+      else if(day == '1') 
+      { 
+        newMonth = month - 1; 
+        newMonth = ("0"+newMonth).slice(-2); 
+        newDate = new Date(newYear, newMonth, 0).getDate(); 
+      }     
+      else if(day == '3') 
+      { 
+        newMonth = month - 2; 
+        newMonth = ("0"+newMonth).slice(-2);
+        newDate = new Date(newYear, newMonth, 0).getDate(); 
       }
 
-      .list_text {
-        text-align: center; 
-        margin-top: 3%;
+      // 1월이면 연도-1
+      if(date != newDate) 
+      {
+        if(newMonth == 0) 
+        {
+          newYear-=1;
+        }
       }
 
-      .list_area {
-        height:900px;
-        width: 75%;
-        padding-left: 5%;
-      }
+      let newDay = newYear + "-" + newMonth + "-" + newDate;
+      if(day == '0')  { newDay = year + "-" + month + "-" + date; }
 
-      .div_font {
-        font-size: 13px;
-        color: #1c1c1c;
-        line-height: 15px;
-      }
+      return newDay;
+    }
 
-      .member_name {
-        font-size:35px; 
-        color:gray; 
-        font-weight:bold;
-      }
+    // 기간 조회
+    function lookUp()
+    {
+      // 컨트롤러 연결 시 수정 예정
+    }
 
-      .member_info {
-        padding:2% 1% 2% 2%;
-        display: flex;
-        justify-content: space-between;
-      }
+    
 
-      .info_text_area {
-        background-color: lightgray; 
-        height: 200px; 
-        margin: 3% 0 3% 0; 
-        vertical-align: middle;
-      }
+  </script>
 
-      .info_extra_area {
-        display:inline-block;
-        padding-top: 8%;
-        width: 400px;
-      }
-
-      .info_extra td {
-        width: 150px;
-        text-align: center;
-      }
-
-      #info_explain {
-        margin-left: auto;
-        margin-right: auto;
-        width:100%;
-        text-align: left;
-      }
-
-      #info_explain th {
-        width: 100%;
-        height:50px;
-      }
-      
-      #res {
-        width: 150px;
-        height:50px;
-        text-align: left;
-        padding: 0;
-        border-bottom: 4px solid darkgray;
-      }
-
-      #info_explain td {
-        width: 200px;
-        height: 70px;
-        text-align: center;
-      }
-
-      #info_explain tr:first-child {
-        border-bottom: 1px solid #ffffff;
-      }
-
-      #info_explain tr {
-        border-bottom: 1px solid lightgray;
-      }
-
-      #res_txt {
-        margin-right: 35px;
-      }
-
-      .btn_area {
-        display: contents;
-        margin-right: 55px;
-      }
-
-      .btn {
-        border: 1px solid gray;
-        height: 32px;
-        line-height: 15px;
-        background-color: lightgray;
-      }
-
-      .date {
-        background-color: #ffffff;
-      }
-
-      .res_area {
-        display: inline-table;
-        margin-right: 55px;
-      }
-
-      #confirm {
-        width: 400px;
-        height: 50px;
-        margin-bottom:10px;
-      }
-
-      #confirm:hover {
-        cursor: pointer;
-        background-color: darkseagreen;
-        border: 1px solid darkseagreen;
-      }
-
-      /* 좌측 회원 메뉴바 */
-      .member_row {
-        display: flex;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -1px;
-      }
-
-      .member_area {
-        flex: 0 0 20%;
-        max-width: 25%;
-      }
-
-      .member_categories {
-        position: relative;
-      }
-
-      .member_categories_all {
-        background: #7fad39;
-        position: relative;
-        padding: 10px 25px 10px 40px;
-        cursor: pointer;
-      }
-
-      .member_categories i {
-        font-size: 16px;
-        color: #ffffff;
-        margin-right: 10px;
-      }
-      .member_bar {
-        display: inline-block;
-        font: normal normal normal 14px/1 FontAwesome;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .member_categories > ul {
-        display: block;
-        padding: 10px 10px 10px 40px;
-        border: 0.5px solid lightgray;
-      }
-
-      .member_categories > ul > li {
-        display: block;
-        padding: 5px;
-      }
-
-      .member_categories > ul > li > a {
-        font-size: 16px;
-        color: #1c1c1c;
-        line-height: 39px;
-        display: block;
-      }
-
-      /* 페이징 */
-      .paging {
-        margin-top: 5%;
-      }
-
-      .paging > a {
-        font-size: 15px;
-        color: #1c1c1c;
-        line-height: 15px;
-      }
-      </style>
 <body>
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
    <!-- Hero Section Begin -->
-   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- <th:block th:replace="fragments/hero :: heroFragment"></th:block> -->
    <!-- Hero Section End -->
    <section class="hero">
     <div class="container">
@@ -244,14 +267,15 @@
                 <div class="member_categories">
                     <div class="member_categories_all">
                         <i class="member_bar"></i>
-                        <span></span>
+                        <span>마이페이지</span>
                     </div>
                     <ul>
-                        <li><a href="#">예약내역조회</a></li>
-                        <li><a href="#">결제내역조회</a></li>
-                        <li><a href="#">1:1 문의</a></li>
-                        <li><a href="#">리뷰내역조회</a></li>
-                        <li><a href="#">좋아요</a></li>
+                      <li><a href="/reservation">예약내역조회</a></li>
+                      <li><a href="/buyProduct">결제내역조회</a></li>
+                      <li><a href="#">1:1 문의</a></li>
+                      <li><a href="#">리뷰내역조회</a></li>
+                      <li><a href="/like">좋아요</a></li>
+                      <li><a href="/withdrawal">회원탈퇴</a></li>
                     </ul>
                 </div>
             </div>
@@ -264,14 +288,14 @@
                     <th colspan="7">
                       <span id="res_txt">예약내역조회</span>
                         <div class="btn_area">
-                          <input type="button" class="btn" value="1주일">
-                          <input type="button" class="btn" value="1개월">
-                          <input type="button" class="btn" value="3개월">
-                          <input type="button" class="btn" value="전체시기">
+                          <input type="button" class="btn" value="1주일" onclick="selectDay(7);">
+                          <input type="button" class="btn" value="1개월" onclick="selectDay(1);">
+                          <input type="button" class="btn" value="3개월" onclick="selectDay(3);">
+                          <input type="button" class="btn" value="전체시기" onclick="selectDay();">
       
-                          <input type="date" class="btn date" value="">&nbsp;-&nbsp;
-                          <input type="date" class="btn date" value="">
-                          <input type="button" class="btn lookup" value="조회">
+                          <input type="date" id="start_date" class="btn date" value="">&nbsp;-&nbsp;
+                          <input type="date" id="end_date" class="btn date" value="">
+                          <input type="button" class="btn lookup" value="조회" onclick="lookUp();">
                         </div>
                     </th>
                   </tr>

@@ -635,6 +635,95 @@ ol {
 	display: block;
 }
 
+/* 좌측 회원 메뉴바 */
+.member_row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -1px;
+}
+
+.member_area {
+	flex: 0 0 20%;
+	max-width: 25%;
+}
+
+.member_categories {
+	position: relative;
+}
+
+.member_categories_all {
+	background: #7fad39;
+	position: relative;
+	padding: 10px 25px 10px 40px;
+	cursor: pointer;
+}
+
+.member_categories_all i {
+	font-size: 16px;
+	color: #ffffff;
+	margin-right: 10px;
+}
+
+.member_categories_all span {
+	font-size: 18px;
+	font-weight: 700;
+	color: #ffffff;
+}
+
+.member_categories_all:after {
+	position: absolute;
+	right: 18px;
+	top: 9px;
+	content: "3";
+	font-family: "ElegantIcons";
+	font-size: 18px;
+	color: #ffffff;
+}
+
+.member_categories ul {
+	border: 1px solid #ebebeb;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-bottom: 12px;
+}
+
+.member_categories ul li {
+	list-style: none;
+}
+
+.member_categories ul li a {
+	font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
+
+.member_bar {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+.member_categories > ul {
+	display: block;
+	padding: 10px 10px 10px 40px;
+	border: 0.5px solid lightgray;
+}
+
+.member_categories > ul > li {
+	display: block;
+	padding: 5px;
+}
+
+.member_categories > ul > li > a {
+	font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
+
 .hero__search {
 	overflow: hidden;
 	margin-bottom: 30px;

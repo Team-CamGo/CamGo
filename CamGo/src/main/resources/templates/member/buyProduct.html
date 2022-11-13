@@ -200,7 +200,7 @@
     <th:block th:replace="fragments/header :: headerFragment"></th:block>
 
    <!-- Hero Section Begin -->
-   <th:block th:replace="fragments/hero :: heroFragment"></th:block>
+   <!-- <th:block th:replace="fragments/hero :: heroFragment"></th:block> -->
    <!-- Hero Section End -->
    <section class="hero">
     <div class="container">
@@ -244,14 +244,15 @@
                 <div class="member_categories">
                     <div class="member_categories_all">
                         <i class="member_bar"></i>
-                        <span></span>
+                        <span>마이페이지</span>
                     </div>
                     <ul>
-                        <li><a href="#">예약내역조회</a></li>
-                        <li><a href="#">결제내역조회</a></li>
-                        <li><a href="#">1:1 문의</a></li>
-                        <li><a href="#">리뷰내역조회</a></li>
-                        <li><a href="#">좋아요</a></li>
+                      <li><a href="/reservation">예약내역조회</a></li>
+                      <li><a href="/buyProduct">결제내역조회</a></li>
+                      <li><a href="#">1:1 문의</a></li>
+                      <li><a href="#">리뷰내역조회</a></li>
+                      <li><a href="/like">좋아요</a></li>
+                      <li><a href="/withdrawal">회원탈퇴</a></li>
                     </ul>
                 </div>
             </div>

@@ -8,14 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class memberController {
 
   /*
-   * 회원탈퇴
-   */
-  @RequestMapping("/withdrawal")
-  public String withdrawal() {
-    return "/member/withdrawal";
-  }
-
-  /*
    * 회원가입 - 정보 동의
    */
   @RequestMapping("/join")
@@ -55,12 +47,29 @@ public class memberController {
     return "/member/buyProduct";
   }
 
+  // 페이지 추가 필요
+  /*
+   * 마이페이지 - 회원 - 1:1문의
+   */
+
+  /*
+   * 마이페이지 - 회원 - 리뷰내역조회
+   */
+
   /*
    * 마이페이지 - 회원 - 좋아요
    */
   @RequestMapping("/like")
   public String like_camping() {
     return "/member/likeCamping";
+  }
+
+  /*
+   * 회원탈퇴
+   */
+  @RequestMapping("/withdrawal")
+  public String withdrawal() {
+    return "/member/withdrawal";
   }
 
   /*
