@@ -1,4 +1,6 @@
-# ![logo](https://github.com/Team-CamGo/CamGo/blob/main/CamGo/src/main/resources/static/img/logo/twitter_header_photo_3.png)CamGo
+# 🛺 CamGo : 캠핑장에 대한 정보를 공유하고 예약을 지원하는 웹 사이트
+
+#### 로고 ![logo](https://github.com/Team-CamGo/CamGo/blob/main/CamGo/src/main/resources/static/img/logo/twitter_header_photo_3.png)
 
 #### 💡 개발배경
 
