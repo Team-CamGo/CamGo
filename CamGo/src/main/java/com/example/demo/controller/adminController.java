@@ -32,8 +32,8 @@ public class adminController {
 
     /*
         공지사항 문의
-        TODO 무슨 기능인지 확인 필요
     */
+    // TODO:  무슨 기능인지 확인 필요
     @RequestMapping("/noticeAnswer")
     public String noticeAnswer() {
         return "/admin/noticeAnswer";

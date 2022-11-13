@@ -240,7 +240,10 @@ line-height: 15px;
                         </div>
                         <hr style="border:0; height:2px;background: #959595;"/>
                         <div class="bottombox">
-                        
+                            <input type="submit" value="등록" class="btn-black" onclick="submit('INSERT');">
+                            <input type="submit" value="수정" class="btn-black" onclick="submit('UPDATE');">
+                            <input type="submit" value="삭제" class="btn-black" onclick="submit('DELETE');">
+                            <input type="submit" value="목록" class="btn-black" onclick="location.href='reviewList'">
                         </div>
                     </div>    
                 </div>
@@ -266,9 +269,32 @@ line-height: 15px;
         </div>
     </div>
 </div>
-</section>   
+</section>
+<script>
+    function submit(mode)
+    {
+        if(mode != 'DELETE')
+        {
+            if(document.getElementById('title').value == '')
+            {
+                alert('제목을 입력하세요');
+                document.getElementById('title').focus();
+            }
+            else if(document.getElementById('content').value == '')
+            {
+                alert('내용을 입력하세요');
+                document.getElementById('content').focus();
+            }
+        }
+        else
+        {
+            if(!confirm('게시글을 삭제하시겠습니까?'))
+            {
+                return false;
+            }
+        }
+    }
+</script>
 <th:block th:replace="fragments/footer :: footerFragment"></th:block>
-
-
 </body>
 </html>
