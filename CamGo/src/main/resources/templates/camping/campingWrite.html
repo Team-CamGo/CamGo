@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html leng="ko">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+    .layout > input {
+        width : 100%;
+        box-sizing: border-box;
+    }
+    .layout textarea {
+        width : 100%;
+        margin-top : 10px;
+        min-height: 300px;
+    }
+</style>
+<body>
+    <div class="layout">
+        <form action="/camping/campingWriteIns" method="post">
+            <input name="name" type="text">
+            <textarea name="addr11"></textarea>
+            <button type="submit">작성</button>
+        </form>
+    </div>
+</body>
+</html>
